@@ -32,7 +32,8 @@ class ViewController: UIViewController {
 		
 		DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
 			
-			if !results.isEmpty {
+			if results != nil {
+				
 				var dbResult:DBChooserResult = results [0] as! DBChooserResult
 				
 				println(dbResult.link)
@@ -40,7 +41,9 @@ class ViewController: UIViewController {
 			}
 			
 			else {
-				// User canceled the action
+				
+				println("User canceled selection")
+	
 			}
 		})
 	

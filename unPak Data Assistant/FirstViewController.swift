@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FirstViewController.swift
 //  unPak Data Assistant
 //
 //  Created by Hassam Solano on 5/15/15.
@@ -21,5 +21,27 @@ class ViewController: UIViewController {
 	}
 
 
+	@IBAction func signInWasPressed(sender: AnyObject) {
+		
+		   DBSession.sharedSession().linkFromController(self)
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 

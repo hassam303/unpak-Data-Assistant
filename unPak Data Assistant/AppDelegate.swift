@@ -15,8 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		// Override point for customization after application launch.
+
+		let dbSession = DBSession(appKey: "yhuvogn5b1m9hbn", appSecret: "u3mbjlw1u55ek92",root: "dropbox")
+		DBSession.setSharedSession(dbSession)
+		
 		return true
+	}
+	
+	func application(application: UIApplication, openURL url: NSURL,sourceApplication: String?, annotation: AnyObject?) -> Bool {
+		if (DBSession.sharedSession().handleOpenURL(url)) {
+			if (DBSession.sharedSession().isLinked()) {
+				NSLog("App linked successfully!");
+				// At this point you can start making API calls
+			}
+			return true;
+		}
+		// Add whatever other url handling code your app requires here
+		return false;
 	}
 
 	func applicationWillResignActive(application: UIApplication) {

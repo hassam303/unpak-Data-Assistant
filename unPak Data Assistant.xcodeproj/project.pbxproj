@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */; };
+		92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB81B0681FE00D7A15B /* Security.framework */; };
+		92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09ABA1B06820700D7A15B /* QuartzCore.framework */; };
 		92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD29C1B066EF40005E8B9 /* AppDelegate.swift */; };
-		92DAD29F1B066EF40005E8B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD29E1B066EF40005E8B9 /* ViewController.swift */; };
+		92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */; };
 		92DAD2A21B066EF40005E8B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A01B066EF40005E8B9 /* Main.storyboard */; };
 		92DAD2A41B066EF40005E8B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A31B066EF40005E8B9 /* Images.xcassets */; };
 		92DAD2A71B066EF40005E8B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */; };
@@ -26,10 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		92C09AB81B0681FE00D7A15B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		92C09ABA1B06820700D7A15B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		92DAD2971B066EF40005E8B9 /* unPak Data Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "unPak Data Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DAD29B1B066EF40005E8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DAD29C1B066EF40005E8B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92DAD29E1B066EF40005E8B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		92DAD2A11B066EF40005E8B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92DAD2A31B066EF40005E8B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92DAD2A61B066EF40005E8B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -44,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */,
+				92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */,
+				92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +69,9 @@
 		92DAD28E1B066EF40005E8B9 = {
 			isa = PBXGroup;
 			children = (
+				92C09ABA1B06820700D7A15B /* QuartzCore.framework */,
+				92C09AB81B0681FE00D7A15B /* Security.framework */,
+				92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */,
 				92DAD2991B066EF40005E8B9 /* unPak Data Assistant */,
 				92DAD2AF1B066EF40005E8B9 /* unPak Data AssistantTests */,
 				92DAD2981B066EF40005E8B9 /* Products */,
@@ -79,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				92DAD29C1B066EF40005E8B9 /* AppDelegate.swift */,
-				92DAD29E1B066EF40005E8B9 /* ViewController.swift */,
+				92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
 				92DAD2A31B066EF40005E8B9 /* Images.xcassets */,
 				92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */,
@@ -214,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92DAD29F1B066EF40005E8B9 /* ViewController.swift in Sources */,
+				92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */,
 				92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +355,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "unPak Data Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,6 +372,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "unPak Data Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -416,6 +436,7 @@
 				92DAD2B81B066EF40005E8B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92DAD2B91B066EF40005E8B9 /* Build configuration list for PBXNativeTarget "unPak Data AssistantTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +445,7 @@
 				92DAD2BB1B066EF40005E8B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

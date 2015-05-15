@@ -83,6 +83,9 @@
                                 <state key="normal" title="Refresh">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didRefresh:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8SQ-uD-YTE"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zNT-L6-Bsh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

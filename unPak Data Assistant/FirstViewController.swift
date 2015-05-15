@@ -28,6 +28,26 @@ class ViewController: UIViewController {
 	}
 	
 	
+	@IBAction func didRefresh(sender: AnyObject) {
+		
+		DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
+			
+			if !results.isEmpty {
+				var dbResult:DBChooserResult = results [0] as! DBChooserResult
+				
+				println(dbResult.link)
+
+			}
+			
+			else {
+				// User canceled the action
+			}
+		})
+	
+		
+		
+		
+}
 	
 	
 	

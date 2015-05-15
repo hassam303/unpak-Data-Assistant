@@ -10,6 +10,8 @@
 		92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */; };
 		92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB81B0681FE00D7A15B /* Security.framework */; };
 		92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09ABA1B06820700D7A15B /* QuartzCore.framework */; };
+		92C09ABE1B068D4000D7A15B /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 92C09ABC1B068D4000D7A15B /* DBChooser.bundle */; };
+		92C09ABF1B068D4000D7A15B /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09ABD1B068D4000D7A15B /* DBChooser.framework */; };
 		92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD29C1B066EF40005E8B9 /* AppDelegate.swift */; };
 		92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */; };
 		92DAD2A21B066EF40005E8B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A01B066EF40005E8B9 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 		92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		92C09AB81B0681FE00D7A15B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		92C09ABA1B06820700D7A15B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		92C09ABC1B068D4000D7A15B /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
+		92C09ABD1B068D4000D7A15B /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		92DAD2971B066EF40005E8B9 /* unPak Data Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "unPak Data Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DAD29B1B066EF40005E8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DAD29C1B066EF40005E8B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C09ABF1B068D4000D7A15B /* DBChooser.framework in Frameworks */,
 				92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */,
 				92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */,
 				92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */,
@@ -69,6 +74,8 @@
 		92DAD28E1B066EF40005E8B9 = {
 			isa = PBXGroup;
 			children = (
+				92C09ABC1B068D4000D7A15B /* DBChooser.bundle */,
+				92C09ABD1B068D4000D7A15B /* DBChooser.framework */,
 				92C09ABA1B06820700D7A15B /* QuartzCore.framework */,
 				92C09AB81B0681FE00D7A15B /* Security.framework */,
 				92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */,
@@ -207,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92DAD2A21B066EF40005E8B9 /* Main.storyboard in Resources */,
+				92C09ABE1B068D4000D7A15B /* DBChooser.bundle in Resources */,
 				92DAD2A71B066EF40005E8B9 /* LaunchScreen.xib in Resources */,
 				92DAD2A41B066EF40005E8B9 /* Images.xcassets in Resources */,
 			);

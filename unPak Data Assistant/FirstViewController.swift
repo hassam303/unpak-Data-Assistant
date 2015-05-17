@@ -13,8 +13,7 @@ class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSourc
 	@IBOutlet weak var tableView: UITableView!
 	
 	var restClient:DBRestClient?
-	var availableFormsArray:[String] = Array<String>()
-	
+	var availableFormsNamesArray:[String] = Array<String>()
 	
 	
 	override func viewDidLoad() {
@@ -25,7 +24,6 @@ class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSourc
 		
 		self.tableView.dataSource = self
 
-		
 		
 	}
 
@@ -72,7 +70,8 @@ class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSourc
 		if metadata.isDirectory{
 			for item in metadata.contents{
 				println(item.filename!!)
-				availableFormsArray.append(item.filename!!)
+				availableFormsNamesArray.append(item.filename!!)
+				
 			}
 		}
 	}
@@ -82,13 +81,13 @@ class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSourc
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("openFormsCell") as! UITableViewCell
 		let iP = indexPath
-		cell.textLabel!.text = availableFormsArray[iP.row]
+		cell.textLabel!.text = availableFormsNamesArray[iP.row]
 		
 		return cell
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.availableFormsArray.count
+		return self.availableFormsNamesArray.count
 	}
 	
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {

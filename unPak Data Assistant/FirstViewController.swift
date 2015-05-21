@@ -8,13 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSource,UITableViewDelegate {
+class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewDataSource,UITableViewDelegate {
+	
+	
 	
 	@IBOutlet weak var tableView: UITableView!
 	
 	var restClient:DBRestClient?
-	var availableFormsNamesArray:[String] = Array<String>()
+	var availableFormsArray:[AnyObject] = Array<AnyObject>()
+	var currentFilePath:String?
 	
+	
+	//	//Set up alert window
+	var alert:UIAlertController!
+	var openFileButtonActionStyle: UIAlertActionStyle!
+	var openFileButtonActionForAlertWindow: UIAlertAction!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,7 +31,18 @@ class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSourc
 		self.restClient!.loadMetadata("/OpenForms")
 		
 		self.tableView.dataSource = self
-
+		
+		
+		
+		//Set-up alert window
+		self.alert = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+		
+		self.openFileButtonActionStyle = UIAlertActionStyle.Default
+		self.openFileButtonActionForAlertWindow = UIAlertAction(title: "Open", style: openFileButtonActionStyle!, handler: nil)
+		
+	
+		self.alert.addAction(openFileButtonActionForAlertWindow!)
+		println("Done")
 		
 	}
 
@@ -68,32 +87,45 @@ class ViewController: UIViewController,DBRestClientDelegate,UITableViewDataSourc
 	//RestClient delegate actions
 	func restClient(client: DBRestClient!, loadedMetadata metadata: DBMetadata!) {
 		if metadata.isDirectory{
-			for item in metadata.contents{
-				println(item.filename!!)
-				availableFormsNamesArray.append(item.filename!!)
-				
-			}
+			self.availableFormsArray = metadata.contents
 		}
 	}
 	
 	
 	//UITableView Set-Up
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("openFormsCell") as! UITableViewCell
-		let iP = indexPath
-		cell.textLabel!.text = availableFormsNamesArray[iP.row]
-		
-		return cell
-	}
-	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.availableFormsNamesArray.count
+		return self.availableFormsArray.count
 	}
 	
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
 	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("openFormsCell") as! UITableViewCell
+		let iP = indexPath
+		cell.textLabel!.text = availableFormsArray[iP.row].filename
+		
+		return cell
+	}
+	
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		tableView.indexPathForSelectedRow()
+		
+		
+		//Segue set-up
+		let destViewController: FormMenuViewController = segue.destinationViewController as! FormMenuViewController
+		var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+	
+		//Passed Variables
+		
+		
+
+	}
+
+	
+
 	
 }
 

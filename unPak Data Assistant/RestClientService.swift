@@ -8,41 +8,48 @@
 
 import UIKit
 
-class RestClientService: DBRestClient, DBRestClientDelegate {
-	
-	var returnArray:Array<AnyObject>?
+class RestClientService: NSObject, DBRestClientDelegate  {
+	let	restClient:DBRestClient
+
+	var returnArray:Array<AnyObject> = Array<AnyObject>()
 	var returnAccountInfo: DBAccountInfo?
+	var loadedMetadata:DBMetadata?
 	
 	override init() {
-		super.init(session:DBSession.sharedSession())
-		self.delegate = self
-		self.returnArray! = Array<AnyObject>()
+		self.restClient = DBRestClient(session:DBSession.sharedSession())
+		super.init()
+		self.restClient.delegate = self
+		
 	}
 	
 	
 	//Public Method Calls
 	func getFileList (path:String) -> Array<AnyObject> {
-		self.loadMetadata(path)
-		return returnArray!
+		self.restClient.loadMetadata(path)
+		
+		if returnArray.count == 0 {
+			println("No values")
+			self.returnArray = self.loadedMetadata!.contents
+			println(returnArray)
+			
+		}
+		return returnArray
 	}
 	
 	func getAccountInfo() -> DBAccountInfo {
-		self.loadAccountInfo()
+		self.restClient.loadAccountInfo()
 		return returnAccountInfo!
 	}
 	
 	func getFile(downloadFile:String, destinationPath:String) {
-		self.loadFile(downloadFile, intoPath: destinationPath)
+		self.restClient.loadFile(downloadFile, intoPath: destinationPath)
 	}
 	
 
 	
 	//RestClient Delegation
 	private func restClient(client: DBRestClient!, loadedMetadata metadata: DBMetadata!) {
-		if metadata.isDirectory{
-			returnArray = metadata.contents
-			
-		}
+			loadedMetadata! = metadata			
 	}
 	
 	private func restClient(client: DBRestClient!, loadedAccountInfo info: DBAccountInfo!) {

@@ -19,6 +19,8 @@
 		92DAD2A41B066EF40005E8B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A31B066EF40005E8B9 /* Images.xcassets */; };
 		92DAD2A71B066EF40005E8B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */; };
 		92DAD2B31B066EF40005E8B9 /* unPak_Data_AssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD2B21B066EF40005E8B9 /* unPak_Data_AssistantTests.swift */; };
+		92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */; };
+		92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */; };
 		92FB58C11B0D7670003855EE /* FormMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FB58C01B0D7670003855EE /* FormMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		92DAD2B11B066EF40005E8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DAD2B21B066EF40005E8B9 /* unPak_Data_AssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unPak_Data_AssistantTests.swift; sourceTree = "<group>"; };
 		92DAD2BC1B0675DE0005E8B9 /* unPak Data Assistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unPak Data Assistant-Bridging-Header.h"; sourceTree = "<group>"; };
+		92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryViewController.swift; sourceTree = "<group>"; };
+		92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewController.swift; sourceTree = "<group>"; };
 		92FB58C01B0D7670003855EE /* FormMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,8 @@
 				92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */,
 				92C09AC01B08400100D7A15B /* RestClientService.swift */,
 				92FB58C01B0D7670003855EE /* FormMenuViewController.swift */,
+				92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */,
+				92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
 				92DAD2A31B066EF40005E8B9 /* Images.xcassets */,
 				92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */,
@@ -241,7 +247,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */,
+				92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */,
 				92C09AC11B08400100D7A15B /* RestClientService.swift in Sources */,
+				92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */,
 				92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */,
 				92FB58C11B0D7670003855EE /* FormMenuViewController.swift in Sources */,
 			);

@@ -12,12 +12,14 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	var numberOfItemsInRow:Int = 4
 	var numberOfRows:Int = 8
+	var passedMetaData:DBMetadata!
 
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		collectionView.dataSource = self
 		
 		
 	}
@@ -36,6 +38,15 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.numberOfItemsInRow
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let destViewController: FormMenuViewController = segue.destinationViewController as! FormMenuViewController
+		
+		//Passed Variable 
+		destViewController.currentMetaData = destViewController.currentMetaData
+		
+		
 	}
 	
 	

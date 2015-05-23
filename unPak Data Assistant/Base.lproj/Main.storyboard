@@ -245,7 +245,6 @@
                                 </state>
                                 <connections>
                                     <action selector="submitButtonWasPressed:" destination="2tL-Ue-L3b" eventType="touchUpInside" id="X5M-wa-D6i"/>
-                                    <segue destination="oel-7w-Onb" kind="show" id="9JD-zD-WMJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Initials:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnB-3z-6Fa">
@@ -337,6 +336,7 @@
                     <connections>
                         <outlet property="formNameLabel" destination="u9J-Om-kwP" id="WIf-0N-PlR"/>
                         <outlet property="initalsTextField" destination="iy3-T7-OF2" id="Xvf-ql-37k"/>
+                        <segue destination="Xdz-Iu-mBo" kind="show" identifier="toCollectionFromFormSegue" id="aDQ-Q9-Cgd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEd-Bn-gof" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -352,6 +352,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ubU-Vo-sCT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3DF-n3-01R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HUm-LW-4ic">
@@ -396,6 +397,7 @@
                                 <exclude reference="HUm-LW-4ic"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="iUa-pM-VNK"/>
                                 <exclude reference="5Ye-Ju-Wud"/>
                                 <exclude reference="Ayf-f9-Txp"/>
                                 <exclude reference="IdH-TL-ctz"/>
@@ -405,7 +407,6 @@
                                 <exclude reference="sac-Ey-Urn"/>
                                 <exclude reference="ybt-6t-8ML"/>
                                 <exclude reference="zGe-F1-ofC"/>
-                                <exclude reference="iUa-pM-VNK"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -413,6 +414,7 @@
                                 <include reference="HUm-LW-4ic"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="iUa-pM-VNK"/>
                                 <include reference="5Ye-Ju-Wud"/>
                                 <exclude reference="Ayf-f9-Txp"/>
                                 <exclude reference="IdH-TL-ctz"/>
@@ -422,18 +424,23 @@
                                 <exclude reference="sac-Ey-Urn"/>
                                 <include reference="ybt-6t-8ML"/>
                                 <exclude reference="zGe-F1-ofC"/>
-                                <include reference="iUa-pM-VNK"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="ord-GX-D7e"/>
+                    <navigationItem key="navigationItem" id="8Xu-2D-jEh">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="A6N-nH-26Z">
+                            <connections>
+                                <segue destination="2tL-Ue-L3b" kind="show" id="dho-qJ-vCc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="HUm-LW-4ic" id="3TA-iV-J1u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZV-ql-Z9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033.5" y="310"/>
+            <point key="canvasLocation" x="1186.5" y="394"/>
         </scene>
         <!--Data Entry View Controller-->
         <scene sceneID="tcV-HW-Mz9">
@@ -444,31 +451,35 @@
                         <viewControllerLayoutGuide type="bottom" id="0Y8-NQ-PET"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="koU-3c-2zo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vup-bL-EHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762.5" y="310"/>
+            <point key="canvasLocation" x="2680.5" y="310"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Oop-Im-ith">
+        <scene sceneID="Go8-kZ-B23">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oel-7w-Onb" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xdz-Iu-mBo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iQE-07-EJP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4au-ya-T4G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Xsh-rt-0sd" kind="relationship" relationship="rootViewController" id="w2H-yL-DDm"/>
+                        <segue destination="Xsh-rt-0sd" kind="relationship" relationship="rootViewController" id="9Hv-Lr-0Op"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bty-6h-iUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lmt-p0-xyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="-381"/>
+            <point key="canvasLocation" x="882" y="-349"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dho-qJ-vCc"/>
+    </inferredMetricsTieBreakers>
 </document>

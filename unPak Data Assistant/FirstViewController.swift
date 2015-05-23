@@ -120,6 +120,9 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 	
 		//Passed Variables
 		
+		destViewController.currentMetaData = availableFormsArray[indexPath.row] as! DBMetadata
+		
+		
 		
 
 	}

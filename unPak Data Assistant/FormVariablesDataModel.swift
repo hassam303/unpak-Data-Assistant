@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@objc(FormVariablesDataModel)
 class FormVariablesDataModel: NSManagedObject {
 	@NSManaged	var plantId: String
 	@NSManaged	var plantPosition: String

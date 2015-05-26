@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@objc(UserVariablesDataModel)
 class UserVariablesDataModel: NSManagedObject {
 	@NSManaged	var formMetaData:	DBMetadata
 	@NSManaged	var formName:		String

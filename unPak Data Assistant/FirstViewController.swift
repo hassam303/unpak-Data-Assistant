@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewDataSource,UITableViewDelegate {
 	
@@ -111,19 +112,35 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 	
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		tableView.indexPathForSelectedRow()
-		
 		
 		//Segue set-up
+		
 		let destViewController: DataEnteringNavigationController = segue.destinationViewController as! DataEnteringNavigationController
 		var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+		
+		// Reference to AppDelegate
+		
+		let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		
+		// Reference managed object context
+		
+		let contxt: NSManagedObjectContext = appDel.managedObjectContext!
+		let ent: NSEntityDescription = NSEntityDescription.entityForName("UserVariables", inManagedObjectContext: contxt)!
+		
+		// Create instatance of data model and initialize 
+		
+		var newForm = UserVariablesDataModel()
+
+		// Map properties
+		
+		newForm.formMetaData = availableFormsArray[indexPath.row] as! DBMetadata
+		
+		// Save context
+		
+		contxt.save(nil)
+		println(newForm)
+		
 	
-		//Passed Variables
-		
-		destViewController.currentMetaData = availableFormsArray[indexPath.row] as! DBMetadata
-		
-		
-		
 
 	}
 

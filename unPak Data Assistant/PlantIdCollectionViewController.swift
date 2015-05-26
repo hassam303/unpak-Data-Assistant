@@ -44,7 +44,6 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		let destViewController: FormMenuViewController = segue.destinationViewController as! FormMenuViewController
 		
 		//Passed Variable 
-		destViewController.currentMetaData = destViewController.currentMetaData
 		
 		
 	}

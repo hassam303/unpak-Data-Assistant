@@ -115,7 +115,7 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		
 		
 		//Segue set-up
-		let destViewController: FormMenuViewController = segue.destinationViewController as! FormMenuViewController
+		let destViewController: DataEnteringNavigationController = segue.destinationViewController as! DataEnteringNavigationController
 		var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
 	
 		//Passed Variables

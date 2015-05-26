@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92214B691B10329A005316CB /* DataEnteringNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92214B681B10329A005316CB /* DataEnteringNavigationController.swift */; };
+		92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */; };
 		92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */; };
 		92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB81B0681FE00D7A15B /* Security.framework */; };
 		92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09ABA1B06820700D7A15B /* QuartzCore.framework */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		92214B681B10329A005316CB /* DataEnteringNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEnteringNavigationController.swift; sourceTree = "<group>"; };
+		92BB31D91B14E30000A29B28 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		92C09AB81B0681FE00D7A15B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		92C09ABA1B06820700D7A15B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -114,6 +116,7 @@
 				92FB58C01B0D7670003855EE /* FormMenuViewController.swift */,
 				92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */,
 				92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */,
+				92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
 				92DAD2A31B066EF40005E8B9 /* Images.xcassets */,
 				92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */,
@@ -252,6 +255,7 @@
 				92214B691B10329A005316CB /* DataEnteringNavigationController.swift in Sources */,
 				92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */,
 				92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */,
+				92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */,
 				92C09AC11B08400100D7A15B /* RestClientService.swift in Sources */,
 				92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */,
 				92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */,
@@ -476,6 +480,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				92BB31D91B14E30000A29B28 /* Model.xcdatamodel */,
+			);
+			currentVersion = 92BB31D91B14E30000A29B28 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 92DAD28F1B066EF40005E8B9 /* Project object */;
 }

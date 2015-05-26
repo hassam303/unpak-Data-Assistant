@@ -98,7 +98,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2tL-Ue-L3b" kind="show" id="1vl-C1-NKZ"/>
+                                            <segue destination="b7h-Ba-y0h" kind="show" id="1vl-C1-NKZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -259,15 +259,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEr-ld-lAK">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="nB5-q4-Rhz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -275,8 +266,6 @@
                             <constraint firstItem="FnB-3z-6Fa" firstAttribute="top" secondItem="u9J-Om-kwP" secondAttribute="bottom" constant="71" id="HVN-D8-nHg"/>
                             <constraint firstAttribute="centerX" secondItem="xa8-e9-p8E" secondAttribute="centerX" id="P7q-cO-D5k"/>
                             <constraint firstItem="iy3-T7-OF2" firstAttribute="top" secondItem="FnB-3z-6Fa" secondAttribute="bottom" constant="8" id="TMs-hv-Aaf"/>
-                            <constraint firstItem="TEr-ld-lAK" firstAttribute="leading" secondItem="qGm-QM-EgS" secondAttribute="leadingMargin" id="ZWB-2f-Koe"/>
-                            <constraint firstItem="TEr-ld-lAK" firstAttribute="top" secondItem="p4X-es-dTR" secondAttribute="bottom" id="ezr-LJ-CuW"/>
                             <constraint firstItem="xa8-e9-p8E" firstAttribute="top" secondItem="iy3-T7-OF2" secondAttribute="bottom" constant="8" id="hqo-0Q-CGj"/>
                             <constraint firstAttribute="centerX" secondItem="FnB-3z-6Fa" secondAttribute="centerX" id="iFY-So-lgm"/>
                             <constraint firstAttribute="centerY" secondItem="iy3-T7-OF2" secondAttribute="centerY" id="qC3-p5-WzL"/>
@@ -291,7 +280,6 @@
                                 <exclude reference="xa8-e9-p8E"/>
                                 <exclude reference="FnB-3z-6Fa"/>
                                 <exclude reference="Njn-rz-asd"/>
-                                <exclude reference="TEr-ld-lAK"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="HVN-D8-nHg"/>
@@ -302,8 +290,6 @@
                                 <exclude reference="uxF-lH-B1G"/>
                                 <exclude reference="z2p-xl-ccT"/>
                                 <exclude reference="zK6-IA-4M2"/>
-                                <exclude reference="ZWB-2f-Koe"/>
-                                <exclude reference="ezr-LJ-CuW"/>
                                 <exclude reference="P7q-cO-D5k"/>
                                 <exclude reference="hqo-0Q-CGj"/>
                             </mask>
@@ -315,7 +301,6 @@
                                 <include reference="xa8-e9-p8E"/>
                                 <include reference="FnB-3z-6Fa"/>
                                 <include reference="Njn-rz-asd"/>
-                                <include reference="TEr-ld-lAK"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="HVN-D8-nHg"/>
@@ -326,22 +311,21 @@
                                 <include reference="uxF-lH-B1G"/>
                                 <include reference="z2p-xl-ccT"/>
                                 <include reference="zK6-IA-4M2"/>
-                                <include reference="ZWB-2f-Koe"/>
-                                <include reference="ezr-LJ-CuW"/>
                                 <include reference="P7q-cO-D5k"/>
                                 <include reference="hqo-0Q-CGj"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="R5B-HW-jY9"/>
                     <connections>
                         <outlet property="formNameLabel" destination="u9J-Om-kwP" id="WIf-0N-PlR"/>
                         <outlet property="initalsTextField" destination="iy3-T7-OF2" id="Xvf-ql-37k"/>
-                        <segue destination="Xdz-Iu-mBo" kind="show" identifier="toCollectionFromFormSegue" id="aDQ-Q9-Cgd"/>
+                        <segue destination="Xsh-rt-0sd" kind="show" identifier="toCollectionFromFormSegue" id="utm-o5-ZgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEd-Bn-gof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214.5" y="310"/>
+            <point key="canvasLocation" x="160.5" y="310"/>
         </scene>
         <!--Plant Id Collection View Controller-->
         <scene sceneID="Is5-ou-Svx">
@@ -377,6 +361,9 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="580"/>
+                                </variation>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -427,20 +414,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="8Xu-2D-jEh">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="A6N-nH-26Z">
-                            <connections>
-                                <segue destination="2tL-Ue-L3b" kind="show" id="dho-qJ-vCc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="HUm-LW-4ic" id="3TA-iV-J1u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZV-ql-Z9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1186.5" y="394"/>
+            <point key="canvasLocation" x="943.5" y="310"/>
         </scene>
         <!--Data Entry View Controller-->
         <scene sceneID="tcV-HW-Mz9">
@@ -458,28 +438,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vup-bL-EHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680.5" y="310"/>
+            <point key="canvasLocation" x="1723.5" y="310"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Go8-kZ-B23">
+        <scene sceneID="zdB-xt-Vng">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xdz-Iu-mBo" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b7h-Ba-y0h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4au-ya-T4G">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1se-Tc-UEb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Xsh-rt-0sd" kind="relationship" relationship="rootViewController" id="9Hv-Lr-0Op"/>
+                        <segue destination="2tL-Ue-L3b" kind="relationship" relationship="rootViewController" id="On7-E1-XxK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lmt-p0-xyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6U-Dt-PZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="-349"/>
+            <point key="canvasLocation" x="160.5" y="-480"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="dho-qJ-vCc"/>
-    </inferredMetricsTieBreakers>
 </document>

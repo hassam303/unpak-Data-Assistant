@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="FormVariables" representedClassName="FormVariablesDataModel" syncable="YES">
-        <attribute name="plantId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="plantPosition" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="UserVariables" representedClassName="UserVariablesDataModel" syncable="YES">
-        <attribute name="formMetaData" optional="YES" attributeType="Transformable" syncable="YES"/>
+    <entity name="NewFormEntity" representedClassName="NewFormManagedObject" syncable="YES">
         <attribute name="formName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="formPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userInitials" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="PlantIdEntity" representedClassName="PlantIdManagedObject" syncable="YES">
+        <attribute name="plantId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="UserVariables" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="FormVariables" positionX="-353" positionY="-30" width="128" height="73"/>
+        <element name="NewFormEntity" positionX="-9" positionY="36" width="128" height="90"/>
+        <element name="PlantIdEntity" positionX="-9" positionY="36" width="128" height="60"/>
     </elements>
 </model>

@@ -115,7 +115,6 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		
 		//Segue set-up
 		
-		let destViewController: DataEnteringNavigationController = segue.destinationViewController as! DataEnteringNavigationController
 		var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
 		
 		// Reference to AppDelegate
@@ -125,15 +124,17 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		// Reference managed object context
 		
 		let contxt: NSManagedObjectContext = appDel.managedObjectContext!
-		let ent: NSEntityDescription = NSEntityDescription.entityForName("UserVariables", inManagedObjectContext: contxt)!
+		let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
 		
 		// Create instatance of data model and initialize 
 		
-		var newForm = UserVariablesDataModel()
+		var newForm = NewFormManagedObject(entity: ent, insertIntoManagedObjectContext: contxt)
+		
 
 		// Map properties
 		
-		newForm.formMetaData = availableFormsArray[indexPath.row] as! DBMetadata
+		newForm.formPath = availableFormsArray[indexPath.row].path!!
+		newForm.formName = availableFormsArray[indexPath.row].filename!!
 		
 		// Save context
 		

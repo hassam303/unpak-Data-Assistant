@@ -7,11 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
 class FormMenuViewController: UIViewController {
-	
-	
-	
 	
 	
 	// Interface outlets
@@ -20,8 +18,7 @@ class FormMenuViewController: UIViewController {
 	
 	
 	
-	// Variables recieved through segue
-	var currentMetaData:DBMetadata!
+	// Variables recieved from CoreData after segue
 	
 	
 	// Variables received through interface
@@ -40,15 +37,37 @@ class FormMenuViewController: UIViewController {
 	
 		let NO_INITIAL_ENTERED:String = "Enter your initials before continuing."
 	
-	// Class variables
 	
-	let userDefaults:NSUserDefaults = NSUserDefaults()
-
+	
+	override func viewDidAppear(animated: Bool) {
+		// Reference to AppDelegate
+		
+		let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		
+		// Reference managed object context & Fetch request
+		
+		let contxt: NSManagedObjectContext = appDel.managedObjectContext!
+		let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
+		let fetch: NSFetchRequest = NSFetchRequest(entityName:"NewFormEntity")
+		
+		
+		let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(fetch, error: nil)!
+		
+		var currentForm: AnyObject? = fetchRequestArray.first
+		
+		println(currentForm)
+		
+		
+		
+		
+		
+		
+	}
 	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.formNameLabel.text = self.currentMetaData.filename
+		
 		
 		//Set-up alert window
 		alert = UIAlertController(title: "No initials Entered!", message: self.NO_INITIAL_ENTERED, preferredStyle: UIAlertControllerStyle.Alert)

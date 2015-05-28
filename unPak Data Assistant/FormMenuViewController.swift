@@ -29,6 +29,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	// Interface outlets
 	@IBOutlet weak var formNameLabel: UILabel!
 	@IBOutlet weak var initalsTextField: UITextField!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	
 	
@@ -99,6 +100,8 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.activityIndicator.hidesWhenStopped = true
+		self.activityIndicator.color = UIColor.greenColor()
 
 		
 		//Initialze tempCSVsURL
@@ -145,8 +148,20 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			//Download current form to a local directory
 			self.downloadCurrentForm()
 			
+			var newFilePath: String = self.tempCSVsURL.URLByAppendingPathComponent(self.currentForm.valueForKey("formName") as! String, isDirectory: false).path!
+			
+			var newFileDownloaded:Bool = false
+			
+			self.activityIndicator.startAnimating()
+			
+			
+			
+		
 			//Segue to collection view
+			
+			if self.fileManager.fileExistsAtPath(newFilePath){
 			self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
+			}
 		}
 	}
 	

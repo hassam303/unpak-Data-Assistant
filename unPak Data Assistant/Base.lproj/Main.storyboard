@@ -259,17 +259,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JPR-ya-S2z">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Njn-rz-asd" secondAttribute="centerX" id="ByH-We-JUm"/>
+                            <constraint firstItem="FnB-3z-6Fa" firstAttribute="top" secondItem="JPR-ya-S2z" secondAttribute="bottom" constant="24" id="FFZ-4J-lSD"/>
                             <constraint firstItem="FnB-3z-6Fa" firstAttribute="top" secondItem="u9J-Om-kwP" secondAttribute="bottom" constant="71" id="HVN-D8-nHg"/>
                             <constraint firstAttribute="centerX" secondItem="xa8-e9-p8E" secondAttribute="centerX" id="P7q-cO-D5k"/>
                             <constraint firstItem="iy3-T7-OF2" firstAttribute="top" secondItem="FnB-3z-6Fa" secondAttribute="bottom" constant="8" id="TMs-hv-Aaf"/>
                             <constraint firstItem="xa8-e9-p8E" firstAttribute="top" secondItem="iy3-T7-OF2" secondAttribute="bottom" constant="8" id="hqo-0Q-CGj"/>
                             <constraint firstAttribute="centerX" secondItem="FnB-3z-6Fa" secondAttribute="centerX" id="iFY-So-lgm"/>
+                            <constraint firstAttribute="centerX" secondItem="JPR-ya-S2z" secondAttribute="centerX" id="nev-EL-b3v"/>
                             <constraint firstAttribute="centerY" secondItem="iy3-T7-OF2" secondAttribute="centerY" id="qC3-p5-WzL"/>
                             <constraint firstAttribute="centerX" secondItem="iy3-T7-OF2" secondAttribute="centerX" id="uxF-lH-B1G"/>
+                            <constraint firstItem="JPR-ya-S2z" firstAttribute="top" secondItem="u9J-Om-kwP" secondAttribute="bottom" constant="26" id="v7o-NT-dHw"/>
                             <constraint firstItem="u9J-Om-kwP" firstAttribute="top" secondItem="Njn-rz-asd" secondAttribute="bottom" constant="40" id="z2p-xl-ccT"/>
                             <constraint firstAttribute="centerX" secondItem="u9J-Om-kwP" secondAttribute="centerX" id="zK6-IA-4M2"/>
                         </constraints>
@@ -280,16 +286,20 @@
                                 <exclude reference="xa8-e9-p8E"/>
                                 <exclude reference="FnB-3z-6Fa"/>
                                 <exclude reference="Njn-rz-asd"/>
+                                <exclude reference="JPR-ya-S2z"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="ByH-We-JUm"/>
+                                <exclude reference="z2p-xl-ccT"/>
+                                <exclude reference="zK6-IA-4M2"/>
+                                <exclude reference="nev-EL-b3v"/>
+                                <exclude reference="v7o-NT-dHw"/>
+                                <exclude reference="FFZ-4J-lSD"/>
                                 <exclude reference="HVN-D8-nHg"/>
                                 <exclude reference="iFY-So-lgm"/>
-                                <exclude reference="ByH-We-JUm"/>
                                 <exclude reference="TMs-hv-Aaf"/>
                                 <exclude reference="qC3-p5-WzL"/>
                                 <exclude reference="uxF-lH-B1G"/>
-                                <exclude reference="z2p-xl-ccT"/>
-                                <exclude reference="zK6-IA-4M2"/>
                                 <exclude reference="P7q-cO-D5k"/>
                                 <exclude reference="hqo-0Q-CGj"/>
                             </mask>
@@ -301,16 +311,20 @@
                                 <include reference="xa8-e9-p8E"/>
                                 <include reference="FnB-3z-6Fa"/>
                                 <include reference="Njn-rz-asd"/>
+                                <include reference="JPR-ya-S2z"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="ByH-We-JUm"/>
+                                <include reference="z2p-xl-ccT"/>
+                                <include reference="zK6-IA-4M2"/>
+                                <include reference="nev-EL-b3v"/>
+                                <include reference="v7o-NT-dHw"/>
+                                <include reference="FFZ-4J-lSD"/>
                                 <include reference="HVN-D8-nHg"/>
                                 <include reference="iFY-So-lgm"/>
-                                <include reference="ByH-We-JUm"/>
                                 <include reference="TMs-hv-Aaf"/>
                                 <include reference="qC3-p5-WzL"/>
                                 <include reference="uxF-lH-B1G"/>
-                                <include reference="z2p-xl-ccT"/>
-                                <include reference="zK6-IA-4M2"/>
                                 <include reference="P7q-cO-D5k"/>
                                 <include reference="hqo-0Q-CGj"/>
                             </mask>
@@ -318,6 +332,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="R5B-HW-jY9"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="JPR-ya-S2z" id="G33-dk-BrR"/>
                         <outlet property="formNameLabel" destination="u9J-Om-kwP" id="WIf-0N-PlR"/>
                         <outlet property="initalsTextField" destination="iy3-T7-OF2" id="Xvf-ql-37k"/>
                         <segue destination="Xsh-rt-0sd" kind="show" identifier="toCollectionFromFormSegue" id="utm-o5-ZgH"/>

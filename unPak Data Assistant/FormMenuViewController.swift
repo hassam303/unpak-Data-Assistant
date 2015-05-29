@@ -27,9 +27,11 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	
 	// Interface outlets
+	@IBOutlet weak var statusView: UIView!
 	@IBOutlet weak var formNameLabel: UILabel!
 	@IBOutlet weak var initalsTextField: UITextField!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet weak var statusLabel: UILabel!
 	
 	
 	
@@ -100,6 +102,8 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.statusView.hidden = true
+		
 		self.activityIndicator.hidesWhenStopped = true
 		self.activityIndicator.color = UIColor.greenColor()
 
@@ -145,17 +149,22 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			//Set user initials to NewForm Managed object
 			self.currentForm.setValue(self.initalsTextField.text, forKey: "userInitials")
 			
-			//Download current form to a local directory
-			self.downloadCurrentForm()
 			
 			var newFilePath: String = self.tempCSVsURL.URLByAppendingPathComponent(self.currentForm.valueForKey("formName") as! String, isDirectory: false).path!
 			
 			var newFileDownloaded:Bool = false
 			
+	
+			self.statusView.hidden = false
+			self.statusLabel.text = "Downloading file from Dropbox"
 			self.activityIndicator.startAnimating()
 			
+			//Establish a separated thread for excuting file download and parsing
 			
-			
+			dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+				self.downloadCurrentForm()
+			})
+		
 		
 			//Segue to collection view
 			
@@ -174,12 +183,20 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	//RestClient delegation methods to handle file downloading
 	func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
 		println("File was properly downloadedfrom:" + metadata.path)
-		println("Saved to:" + destPath)
+		println("Saved to:" + destPath + metadata.filename)
+		
+		self.statusLabel.text = "DONE!"
 	}
 	
 	func restClient(client: DBRestClient!, loadFileFailedWithError error: NSError!) {
 		println("File was not downloaded, whomp, whomp")
 	}
+	
+	func parseCSV(){
+		
+	}
+	
+
 	
 	
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftCSV
 
 class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
@@ -24,6 +25,14 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		let restClient: DBRestClient = DBRestClient(session: DBSession.sharedSession())
 	
 	
+	
+	
+	// Variables for parsing CSV and passing to PlantIdCollectionViewController
+	var newFilePath:String!
+	
+	var csvFile: CSV?
+	var csvHeaders:[String]!
+	var csvRows: [Dictionary<String, String>]!
 	
 	
 	// Interface outlets
@@ -148,12 +157,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		else {
 			//Set user initials to NewForm Managed object
 			self.currentForm.setValue(self.initalsTextField.text, forKey: "userInitials")
-			
-			
-			var newFilePath: String = self.tempCSVsURL.URLByAppendingPathComponent(self.currentForm.valueForKey("formName") as! String, isDirectory: false).path!
-			
-			var newFileDownloaded:Bool = false
-			
 	
 			self.statusView.hidden = false
 			self.statusLabel.text = "Downloading file from Dropbox"
@@ -161,16 +164,10 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			
 			//Establish a separated thread for excuting file download and parsing
 			
-			dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-				self.downloadCurrentForm()
-			})
+			self.downloadCurrentForm()
 		
 		
-			//Segue to collection view
-			
-			if self.fileManager.fileExistsAtPath(newFilePath){
-			self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
-			}
+		
 		}
 	}
 	
@@ -182,22 +179,51 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	//RestClient delegation methods to handle file downloading
 	func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
-		println("File was properly downloadedfrom:" + metadata.path)
-		println("Saved to:" + destPath + metadata.filename)
+		//println("File was properly downloadedfrom:" + metadata.path)
+		//println("Saved to:" + destPath + metadata.filename)
 		
-		self.statusLabel.text = "DONE!"
+		self.statusLabel.text = "Preparing worksheet"
+		
+		self.newFilePath = destPath.stringByAppendingPathComponent(metadata.filename)
+		var newFileURL:NSURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
+		
+		println(newFileURL)
+		
+		
+		self.parseCSV(newFileURL)
+
+		
+		
 	}
 	
 	func restClient(client: DBRestClient!, loadFileFailedWithError error: NSError!) {
 		println("File was not downloaded, whomp, whomp")
 	}
 	
-	func parseCSV(){
+	private func parseCSV(fileURL:NSURL) {
+		
+		//println("Attempting to get file from here:")
+		//println(fileURL)
+		
+		var error:NSErrorPointer = nil
+		self.csvFile = CSV(contentsOfURL: fileURL, error: error)
+		
+		
+		println(csvFile!)
+		
+		self.csvHeaders = self.csvFile!.headers
+		
+		self.csvRows = self.csvFile!.rows
+		
+		println("New Array:")
+		println(self.csvHeaders)
+		
 		
 	}
 	
-
 	
+
+	//self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
 	
 
 }

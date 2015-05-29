@@ -8,11 +8,12 @@
 
 import UIKit
 
-class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate {
+class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 	
 	var numberOfItemsInRow:Int = 4
 	var numberOfRows:Int = 8
 	var passedMetaData:DBMetadata!
+	var plantIdArray:Array<String> = ["hello","world"]
 
 	
 	@IBOutlet weak var collectionView: UICollectionView!
@@ -31,22 +32,27 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let iP:NSIndexPath = indexPath
 		
-		let cell:UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("plantIdCell", forIndexPath: iP) as! UICollectionViewCell
+		let cell:PlantIdCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("plantIdCell", forIndexPath: iP) as! PlantIdCollectionViewCell
+		
+		cell.cellLabel.text = self.plantIdArray[iP.row]
 		
 		return cell
 	}
 	
+	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.numberOfItemsInRow
+		return self.plantIdArray.count
 	}
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let destViewController: FormMenuViewController = segue.destinationViewController as! FormMenuViewController
-		
-		//Passed Variable 
-		
-		
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+		return UIEdgeInsetsMake(5, 5, 5, 5)
 	}
+	
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		return CGSizeMake(50, 50)
+	}
+	
+	
 	
 	
 }

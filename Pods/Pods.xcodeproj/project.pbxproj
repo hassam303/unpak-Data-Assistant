@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EA8AC4F914AD241BB89D6C7 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C18A2B2A4096C664C620ED4 /* CSV.swift */; };
+		5FB58A13F72E89738977C6BC /* Pods-unPak Data Assistant-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C2A0C6A2575D71DDC9617D /* Pods-unPak Data Assistant-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C87149BA8F4E52A01D718F2 /* Pods-unPak Data Assistant-SwiftCSV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 45739F56FEC0D72671EC542E /* Pods-unPak Data Assistant-SwiftCSV-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A280B1E74C687685B9AB5512 /* Pods-unPak Data Assistant-SwiftCSV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19406050325EE868CA111BC1 /* Pods-unPak Data Assistant-SwiftCSV-dummy.m */; };
+		E5346D859E7F1CB1097A89D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A682331A59EEB6BCB2800EE /* Foundation.framework */; };
+		F415322430F59E5C00A4F68E /* Pods-unPak Data Assistant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C7F8F8A380BF8D2245F2E /* Pods-unPak Data Assistant-dummy.m */; };
+		F99105B5C40E7A7386B49AF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A682331A59EEB6BCB2800EE /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84E7A6B0D98B7926316D49D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61B65FABFDC4EE580B146ED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1E96E73F7EFAE64AAB1EFF9;
+			remoteInfo = "Pods-unPak Data Assistant-SwiftCSV";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		077527237A3D423D0BFDF6AB /* Pods-unPak Data Assistant-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-unPak Data Assistant-frameworks.sh"; sourceTree = "<group>"; };
+		0AE38E54393D7B01EA20A029 /* Pods-unPak Data Assistant-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-unPak Data Assistant-acknowledgements.plist"; sourceTree = "<group>"; };
+		18E73C15DFE7C11960EE017B /* Pods-unPak Data Assistant-SwiftCSV.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-unPak Data Assistant-SwiftCSV.modulemap"; sourceTree = "<group>"; };
+		19406050325EE868CA111BC1 /* Pods-unPak Data Assistant-SwiftCSV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-unPak Data Assistant-SwiftCSV-dummy.m"; sourceTree = "<group>"; };
+		27EDEA151E5ABE1AC9C98DB1 /* Pods-unPak Data Assistant-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-unPak Data Assistant-resources.sh"; sourceTree = "<group>"; };
+		2B65EE2C91F018903B6832EC /* Pods-unPak Data Assistant-SwiftCSV-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-unPak Data Assistant-SwiftCSV-Private.xcconfig"; sourceTree = "<group>"; };
+		3224CAD149A0A952A9B89305 /* Pods-unPak Data Assistant-SwiftCSV.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-unPak Data Assistant-SwiftCSV.xcconfig"; sourceTree = "<group>"; };
+		45739F56FEC0D72671EC542E /* Pods-unPak Data Assistant-SwiftCSV-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-unPak Data Assistant-SwiftCSV-umbrella.h"; sourceTree = "<group>"; };
+		49D23CC80BDA2A4E4027BD79 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B0C7F8F8A380BF8D2245F2E /* Pods-unPak Data Assistant-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-unPak Data Assistant-dummy.m"; sourceTree = "<group>"; };
+		7019D76E90FCBC9F0884514C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A682331A59EEB6BCB2800EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8C18A2B2A4096C664C620ED4 /* CSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CSV.swift; path = SwiftCSV/CSV.swift; sourceTree = "<group>"; };
+		8DDB6D8241C4743B078BA36A /* Pods-unPak Data Assistant-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-unPak Data Assistant-environment.h"; sourceTree = "<group>"; };
+		9A7FC3BF320E319E6A9DC4A0 /* Pods-unPak Data Assistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-unPak Data Assistant.release.xcconfig"; sourceTree = "<group>"; };
+		9E7698477B6694C47F04A76E /* SwiftCSV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftCSV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A43597ECC3D9A055CBF67065 /* Pods-unPak Data Assistant-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-unPak Data Assistant-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A764AFC4B2C3DF8B9ECC60CC /* Pods_unPak_Data_Assistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unPak_Data_Assistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEEF451CF2662A50387DF8E5 /* Pods-unPak Data Assistant.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-unPak Data Assistant.modulemap"; sourceTree = "<group>"; };
+		C8C2A0C6A2575D71DDC9617D /* Pods-unPak Data Assistant-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-unPak Data Assistant-umbrella.h"; sourceTree = "<group>"; };
+		E591DB1E4EBD2433CD7774A8 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EEA55911070A57FA35BB1CF2 /* Pods-unPak Data Assistant-SwiftCSV-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-unPak Data Assistant-SwiftCSV-prefix.pch"; sourceTree = "<group>"; };
+		F539AB0265432EEF227CF1E7 /* Pods-unPak Data Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-unPak Data Assistant.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68F636DCF2C6166F325D7687 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5346D859E7F1CB1097A89D6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E88EB5D35CEF6FCCD3C00A44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F99105B5C40E7A7386B49AF3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19687A369C0527EF6362A8AC /* Pods-unPak Data Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				49D23CC80BDA2A4E4027BD79 /* Info.plist */,
+				BEEF451CF2662A50387DF8E5 /* Pods-unPak Data Assistant.modulemap */,
+				A43597ECC3D9A055CBF67065 /* Pods-unPak Data Assistant-acknowledgements.markdown */,
+				0AE38E54393D7B01EA20A029 /* Pods-unPak Data Assistant-acknowledgements.plist */,
+				5B0C7F8F8A380BF8D2245F2E /* Pods-unPak Data Assistant-dummy.m */,
+				8DDB6D8241C4743B078BA36A /* Pods-unPak Data Assistant-environment.h */,
+				077527237A3D423D0BFDF6AB /* Pods-unPak Data Assistant-frameworks.sh */,
+				27EDEA151E5ABE1AC9C98DB1 /* Pods-unPak Data Assistant-resources.sh */,
+				C8C2A0C6A2575D71DDC9617D /* Pods-unPak Data Assistant-umbrella.h */,
+				F539AB0265432EEF227CF1E7 /* Pods-unPak Data Assistant.debug.xcconfig */,
+				9A7FC3BF320E319E6A9DC4A0 /* Pods-unPak Data Assistant.release.xcconfig */,
+			);
+			name = "Pods-unPak Data Assistant";
+			path = "Target Support Files/Pods-unPak Data Assistant";
+			sourceTree = "<group>";
+		};
+		262599F350B1F032BEA18661 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7A682331A59EEB6BCB2800EE /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3813DBDE26CD15DA947F6273 = {
+			isa = PBXGroup;
+			children = (
+				E591DB1E4EBD2433CD7774A8 /* Podfile */,
+				DE686714E9C358DE7603E4CA /* Frameworks */,
+				7BA1B3D57C0CAC12B7172EE5 /* Pods */,
+				8225CCE2B0210C3586E9B364 /* Products */,
+				5BCF0CC679940F0E7B2D866C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		4B4517F3CBF78C71ED32340E /* SwiftCSV */ = {
+			isa = PBXGroup;
+			children = (
+				8C18A2B2A4096C664C620ED4 /* CSV.swift */,
+				D477321761AC8DAB4A6FFC3C /* Support Files */,
+			);
+			path = SwiftCSV;
+			sourceTree = "<group>";
+		};
+		5BCF0CC679940F0E7B2D866C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				19687A369C0527EF6362A8AC /* Pods-unPak Data Assistant */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7BA1B3D57C0CAC12B7172EE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B4517F3CBF78C71ED32340E /* SwiftCSV */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8225CCE2B0210C3586E9B364 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A764AFC4B2C3DF8B9ECC60CC /* Pods_unPak_Data_Assistant.framework */,
+				9E7698477B6694C47F04A76E /* SwiftCSV.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D477321761AC8DAB4A6FFC3C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7019D76E90FCBC9F0884514C /* Info.plist */,
+				18E73C15DFE7C11960EE017B /* Pods-unPak Data Assistant-SwiftCSV.modulemap */,
+				3224CAD149A0A952A9B89305 /* Pods-unPak Data Assistant-SwiftCSV.xcconfig */,
+				2B65EE2C91F018903B6832EC /* Pods-unPak Data Assistant-SwiftCSV-Private.xcconfig */,
+				19406050325EE868CA111BC1 /* Pods-unPak Data Assistant-SwiftCSV-dummy.m */,
+				EEA55911070A57FA35BB1CF2 /* Pods-unPak Data Assistant-SwiftCSV-prefix.pch */,
+				45739F56FEC0D72671EC542E /* Pods-unPak Data Assistant-SwiftCSV-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-unPak Data Assistant-SwiftCSV";
+			sourceTree = "<group>";
+		};
+		DE686714E9C358DE7603E4CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				262599F350B1F032BEA18661 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		161BB08CD242F79551AAB84C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C87149BA8F4E52A01D718F2 /* Pods-unPak Data Assistant-SwiftCSV-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545C87E4ED3A7598F6935440 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FB58A13F72E89738977C6BC /* Pods-unPak Data Assistant-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		73F1FD178DD42D6770EB4802 /* Pods-unPak Data Assistant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64295468768F7E6D76FB8927 /* Build configuration list for PBXNativeTarget "Pods-unPak Data Assistant" */;
+			buildPhases = (
+				6B1A213CDDD419E9A6FF19E0 /* Sources */,
+				68F636DCF2C6166F325D7687 /* Frameworks */,
+				545C87E4ED3A7598F6935440 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0475566FC28C1E793DC566A7 /* PBXTargetDependency */,
+			);
+			name = "Pods-unPak Data Assistant";
+			productName = "Pods-unPak Data Assistant";
+			productReference = A764AFC4B2C3DF8B9ECC60CC /* Pods_unPak_Data_Assistant.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C1E96E73F7EFAE64AAB1EFF9 /* Pods-unPak Data Assistant-SwiftCSV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D174A3803F4375DBFA933CE6 /* Build configuration list for PBXNativeTarget "Pods-unPak Data Assistant-SwiftCSV" */;
+			buildPhases = (
+				747C6CC2AF81CC7FD92023A8 /* Sources */,
+				E88EB5D35CEF6FCCD3C00A44 /* Frameworks */,
+				161BB08CD242F79551AAB84C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-unPak Data Assistant-SwiftCSV";
+			productName = "Pods-unPak Data Assistant-SwiftCSV";
+			productReference = 9E7698477B6694C47F04A76E /* SwiftCSV.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61B65FABFDC4EE580B146ED9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = DCF3B9C4A20BF11CA15A47EA /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3813DBDE26CD15DA947F6273;
+			productRefGroup = 8225CCE2B0210C3586E9B364 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				73F1FD178DD42D6770EB4802 /* Pods-unPak Data Assistant */,
+				C1E96E73F7EFAE64AAB1EFF9 /* Pods-unPak Data Assistant-SwiftCSV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B1A213CDDD419E9A6FF19E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F415322430F59E5C00A4F68E /* Pods-unPak Data Assistant-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		747C6CC2AF81CC7FD92023A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA8AC4F914AD241BB89D6C7 /* CSV.swift in Sources */,
+				A280B1E74C687685B9AB5512 /* Pods-unPak Data Assistant-SwiftCSV-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0475566FC28C1E793DC566A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-unPak Data Assistant-SwiftCSV";
+			target = C1E96E73F7EFAE64AAB1EFF9 /* Pods-unPak Data Assistant-SwiftCSV */;
+			targetProxy = 84E7A6B0D98B7926316D49D6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2F7833D5A0876961C7E596FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B65EE2C91F018903B6832EC /* Pods-unPak Data Assistant-SwiftCSV-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-unPak Data Assistant-SwiftCSV/Pods-unPak Data Assistant-SwiftCSV-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-unPak Data Assistant-SwiftCSV/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-unPak Data Assistant-SwiftCSV/Pods-unPak Data Assistant-SwiftCSV.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftCSV;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		31EABCD8B675BE011DE2A2F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B65EE2C91F018903B6832EC /* Pods-unPak Data Assistant-SwiftCSV-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-unPak Data Assistant-SwiftCSV/Pods-unPak Data Assistant-SwiftCSV-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-unPak Data Assistant-SwiftCSV/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-unPak Data Assistant-SwiftCSV/Pods-unPak Data Assistant-SwiftCSV.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftCSV;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4B641A23ACCB951C327DD38B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		544CECE26D9ABA53B1C3EF59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A7FC3BF320E319E6A9DC4A0 /* Pods-unPak Data Assistant.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-unPak Data Assistant/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_unPak_Data_Assistant;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9C4668373AF1D0814D28DF3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B38DD0CE23EA816FB92DF059 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F539AB0265432EEF227CF1E7 /* Pods-unPak Data Assistant.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-unPak Data Assistant/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_unPak_Data_Assistant;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64295468768F7E6D76FB8927 /* Build configuration list for PBXNativeTarget "Pods-unPak Data Assistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B38DD0CE23EA816FB92DF059 /* Debug */,
+				544CECE26D9ABA53B1C3EF59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D174A3803F4375DBFA933CE6 /* Build configuration list for PBXNativeTarget "Pods-unPak Data Assistant-SwiftCSV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31EABCD8B675BE011DE2A2F2 /* Debug */,
+				2F7833D5A0876961C7E596FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCF3B9C4A20BF11CA15A47EA /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B641A23ACCB951C327DD38B /* Debug */,
+				9C4668373AF1D0814D28DF3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61B65FABFDC4EE580B146ED9 /* Project object */;
+}

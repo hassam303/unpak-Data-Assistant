@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92466B3F1B17A5AA0085B6FE /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92466B3E1B17A5AA0085B6FE /* CSV.swift */; };
+		0E920300CC018924FAB34B02 /* Pods_unPak_Data_Assistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		922F4B8E1B18E27F0072E470 /* PlantIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */; };
 		92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */; };
 		92BB31DE1B14EAB700A29B28 /* NewFormManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */; };
 		92BB31E01B14EAD100A29B28 /* PlantIdManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */; };
@@ -38,7 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		92466B3E1B17A5AA0085B6FE /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		360FE943FCB1E4A88E807CC5 /* Pods-unPak Data Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unPak Data Assistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.debug.xcconfig"; sourceTree = "<group>"; };
+		36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unPak_Data_Assistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewCell.swift; sourceTree = "<group>"; };
 		92BB31D91B14E30000A29B28 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFormManagedObject.swift; sourceTree = "<group>"; };
 		92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdManagedObject.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryViewController.swift; sourceTree = "<group>"; };
 		92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewController.swift; sourceTree = "<group>"; };
 		92FB58C01B0D7670003855EE /* FormMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormMenuViewController.swift; sourceTree = "<group>"; };
+		ED9F88319F191E81704EDA35 /* Pods-unPak Data Assistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unPak Data Assistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 				92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */,
 				92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */,
 				92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */,
+				0E920300CC018924FAB34B02 /* Pods_unPak_Data_Assistant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07889E009A57901A80DA69B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				360FE943FCB1E4A88E807CC5 /* Pods-unPak Data Assistant.debug.xcconfig */,
+				ED9F88319F191E81704EDA35 /* Pods-unPak Data Assistant.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		92DAD28E1B066EF40005E8B9 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +110,8 @@
 				92DAD2991B066EF40005E8B9 /* unPak Data Assistant */,
 				92DAD2AF1B066EF40005E8B9 /* unPak Data AssistantTests */,
 				92DAD2981B066EF40005E8B9 /* Products */,
+				07889E009A57901A80DA69B1 /* Pods */,
+				A9FD234F8C283CE7B05C75BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,13 +127,13 @@
 		92DAD2991B066EF40005E8B9 /* unPak Data Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				92466B3E1B17A5AA0085B6FE /* CSV.swift */,
 				92DAD29C1B066EF40005E8B9 /* AppDelegate.swift */,
 				92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */,
 				92FB58C01B0D7670003855EE /* FormMenuViewController.swift */,
 				92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */,
 				92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
+				922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */,
 				92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */,
 				92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */,
 				92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */,
@@ -154,6 +170,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A9FD234F8C283CE7B05C75BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,9 +185,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92DAD2B61B066EF40005E8B9 /* Build configuration list for PBXNativeTarget "unPak Data Assistant" */;
 			buildPhases = (
+				148AF758F4156BDC36DC864B /* Check Pods Manifest.lock */,
 				92DAD2931B066EF40005E8B9 /* Sources */,
 				92DAD2941B066EF40005E8B9 /* Frameworks */,
 				92DAD2951B066EF40005E8B9 /* Resources */,
+				D7BD1F54C3B6178D15CBD12D /* Embed Pods Frameworks */,
+				90CFC883DFD320D344BE54CB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		148AF758F4156BDC36DC864B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90CFC883DFD320D344BE54CB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7BD1F54C3B6178D15CBD12D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92DAD2931B066EF40005E8B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -260,8 +335,8 @@
 				92BB31DE1B14EAB700A29B28 /* NewFormManagedObject.swift in Sources */,
 				92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */,
 				92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */,
-				92466B3F1B17A5AA0085B6FE /* CSV.swift in Sources */,
 				92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */,
+				922F4B8E1B18E27F0072E470 /* PlantIdCollectionViewCell.swift in Sources */,
 				92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */,
 				92FB58C11B0D7670003855EE /* FormMenuViewController.swift in Sources */,
 			);
@@ -388,6 +463,7 @@
 		};
 		92DAD2B71B066EF40005E8B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 360FE943FCB1E4A88E807CC5 /* Pods-unPak Data Assistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -405,6 +481,7 @@
 		};
 		92DAD2B81B066EF40005E8B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED9F88319F191E81704EDA35 /* Pods-unPak Data Assistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

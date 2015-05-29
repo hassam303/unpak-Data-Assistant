@@ -354,23 +354,23 @@
                                 <exclude reference="L3t-Bz-XZL"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ByH-We-JUm"/>
-                                <exclude reference="A8b-4f-5Ok"/>
-                                <exclude reference="aNq-LW-yhD"/>
-                                <exclude reference="aw1-jK-oBA"/>
-                                <exclude reference="zFs-zC-pfh"/>
-                                <exclude reference="z2p-xl-ccT"/>
-                                <exclude reference="zK6-IA-4M2"/>
                                 <exclude reference="HVN-D8-nHg"/>
                                 <exclude reference="KQJ-1V-vqz"/>
                                 <exclude reference="Wjx-GT-ij6"/>
                                 <exclude reference="iFY-So-lgm"/>
                                 <exclude reference="q3t-72-P6W"/>
+                                <exclude reference="ByH-We-JUm"/>
                                 <exclude reference="TMs-hv-Aaf"/>
                                 <exclude reference="qC3-p5-WzL"/>
                                 <exclude reference="uxF-lH-B1G"/>
+                                <exclude reference="z2p-xl-ccT"/>
+                                <exclude reference="zK6-IA-4M2"/>
                                 <exclude reference="P7q-cO-D5k"/>
                                 <exclude reference="hqo-0Q-CGj"/>
+                                <exclude reference="A8b-4f-5Ok"/>
+                                <exclude reference="aNq-LW-yhD"/>
+                                <exclude reference="aw1-jK-oBA"/>
+                                <exclude reference="zFs-zC-pfh"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -383,23 +383,23 @@
                                 <include reference="L3t-Bz-XZL"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ByH-We-JUm"/>
-                                <exclude reference="A8b-4f-5Ok"/>
-                                <exclude reference="aNq-LW-yhD"/>
-                                <include reference="aw1-jK-oBA"/>
-                                <include reference="zFs-zC-pfh"/>
-                                <include reference="z2p-xl-ccT"/>
-                                <include reference="zK6-IA-4M2"/>
                                 <include reference="HVN-D8-nHg"/>
                                 <exclude reference="KQJ-1V-vqz"/>
                                 <exclude reference="Wjx-GT-ij6"/>
                                 <include reference="iFY-So-lgm"/>
                                 <include reference="q3t-72-P6W"/>
+                                <include reference="ByH-We-JUm"/>
                                 <include reference="TMs-hv-Aaf"/>
                                 <include reference="qC3-p5-WzL"/>
                                 <include reference="uxF-lH-B1G"/>
+                                <include reference="z2p-xl-ccT"/>
+                                <include reference="zK6-IA-4M2"/>
                                 <include reference="P7q-cO-D5k"/>
                                 <include reference="hqo-0Q-CGj"/>
+                                <exclude reference="A8b-4f-5Ok"/>
+                                <exclude reference="aNq-LW-yhD"/>
+                                <include reference="aw1-jK-oBA"/>
+                                <include reference="zFs-zC-pfh"/>
                             </mask>
                         </variation>
                     </view>
@@ -432,21 +432,43 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HUm-LW-4ic">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kbg-aJ-toy">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="72" height="70"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="plantIdCell" id="QGL-EW-vi6">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="plantIdCell" id="QGL-EW-vi6" customClass="PlantIdCollectionViewCell" customModule="unPak_Data_Assistant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="72" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVS-XE-Tan">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="15" y="24" width="42" height="21"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="eVS-XE-Tan"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="eVS-XE-Tan"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
+                                            <outlet property="cellLabel" destination="eVS-XE-Tan" id="amZ-2o-XhW"/>
                                             <segue destination="LkE-q6-hId" kind="show" id="y14-wW-3cL"/>
                                         </connections>
                                     </collectionViewCell>

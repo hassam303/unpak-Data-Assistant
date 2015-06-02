@@ -12,8 +12,10 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	var numberOfItemsInRow:Int = 4
 	var numberOfRows:Int = 8
-	var passedMetaData:DBMetadata!
-	var plantIdArray:Array<String> = ["hello","world"]
+	
+	var csvHeadersArray: [String] = []
+	var csvplantIdArray:Array<String> = []
+	var csvRowsDataArray: [Dictionary<String, String>]!
 
 	
 	@IBOutlet weak var collectionView: UICollectionView!
@@ -34,18 +36,20 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		
 		let cell:PlantIdCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("plantIdCell", forIndexPath: iP) as! PlantIdCollectionViewCell
 		
-		cell.cellLabel.text = self.plantIdArray[iP.row]
+		
+		
+		cell.cellLabel.text = self.csvplantIdArray[iP.row]
 		
 		return cell
 	}
 	
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.plantIdArray.count
+		return self.csvplantIdArray.count
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return UIEdgeInsetsMake(5, 5, 5, 5)
+		return UIEdgeInsetsMake(1, 1, 1, 1)
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

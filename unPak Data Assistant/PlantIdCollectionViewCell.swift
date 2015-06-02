@@ -12,5 +12,9 @@ class PlantIdCollectionViewCell: UICollectionViewCell {
 	
 	@IBOutlet weak var cellLabel: UILabel!
 	
+	
+	
+	
+	
 	    
 }

@@ -28,11 +28,14 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	
 	// Variables for parsing CSV and passing to PlantIdCollectionViewController
+
 	var newFilePath:String!
+	var newFileURL:NSURL!
 	
 	var csvFile: CSV?
 	var csvHeaders:[String]!
 	var csvRows: [Dictionary<String, String>]!
+
 	
 	
 	// Interface outlets
@@ -165,7 +168,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			//Establish a separated thread for excuting file download and parsing
 			
 			self.downloadCurrentForm()
-		
+			//self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
 		
 		
 		}
@@ -173,34 +176,40 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	//Private self contained call to download current form to tempCSVs local folder for manipulation
 	private func downloadCurrentForm(){
-		self.restClient.loadFile(self.currentForm.valueForKey("formPath") as! String, intoPath: self.tempCSVsURL.path)
+
+		self.newFilePath = self.tempCSVsURL.path?.stringByAppendingPathComponent(self.currentForm.valueForKey("formName") as! String)
+
+		self.restClient.loadFile(self.currentForm.valueForKey("formPath") as! String, intoPath: self.newFilePath)
 
 	}
 	
-	//RestClient delegation methods to handle file downloading
+	//RestClient delegation methods to handle file downloading ***Also contains code for initiating CSV Parsing*** (
+		//Parsing code added here to emphasize that file is both downloaded and then parsed,MAY NEED FURTHER STREAMLINING
+	
 	func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
 		//println("File was properly downloadedfrom:" + metadata.path)
 		//println("Saved to:" + destPath + metadata.filename)
+		println("Successful Download")
 		
 		self.statusLabel.text = "Preparing worksheet"
 		
-		self.newFilePath = destPath.stringByAppendingPathComponent(metadata.filename)
-		var newFileURL:NSURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
+		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
 		
-		println(newFileURL)
+		//println(newFileURL)
 		
 		
-		self.parseCSV(newFileURL)
+		self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
+
 
 		
-		
+	
 	}
 	
 	func restClient(client: DBRestClient!, loadFileFailedWithError error: NSError!) {
 		println("File was not downloaded, whomp, whomp")
 	}
 	
-	private func parseCSV(fileURL:NSURL) {
+	private func parseCSV(fileURL:NSURL,segue:UIStoryboardSegue) {
 		
 		//println("Attempting to get file from here:")
 		//println(fileURL)
@@ -209,21 +218,58 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		self.csvFile = CSV(contentsOfURL: fileURL, error: error)
 		
 		
-		println(csvFile!)
+		//println(csvFile!)
 		
 		self.csvHeaders = self.csvFile!.headers
 		
 		self.csvRows = self.csvFile!.rows
 		
-		println("New Array:")
-		println(self.csvHeaders)
+		self.statusLabel.text = "Done!"
+		self.activityIndicator.stopAnimating()
+		
+		
+		
+		
+		
+		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
+		
+		
+		
+		vc.csvHeadersArray = self.csvHeaders
+		vc.csvRowsDataArray = self.csvRows
+		vc.csvplantIdArray = self.csvFile!.columns["Plant ID"]!
+		
+		println("All Arrays sent")
+		
 		
 		
 	}
 	
 	
+	private func sendArraysToCollectionViewController (segue:UIStoryboardSegue) {
+		
 
-	//self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
+//		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
+//
+//		
+//		
+//		vc.csvHeadersArray = self.csvHeaders
+//		vc.csvRowsDataArray = self.csvRows
+//		vc.csvplantIdArray = self.csvFile!.columns["Plant ID"]!
+//		
+//		println("All Arrays sent")
+		
+		
+
+	}
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		self.parseCSV(self.newFileURL, segue: segue)
+		
+	}
+
+
+	
+
 	
 
 }

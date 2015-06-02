@@ -281,7 +281,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihm-Br-epW">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -445,26 +445,38 @@
                                             <rect key="frame" x="0.0" y="0.0" width="72" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVS-XE-Tan">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVS-XE-Tan">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="15" y="24" width="42" height="21"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="eVS-XE-Tan" secondAttribute="trailing" constant="-8" id="4Ii-MO-UB1"/>
+                                            <constraint firstAttribute="centerY" secondItem="eVS-XE-Tan" secondAttribute="centerY" id="bQt-AV-9e2"/>
+                                            <constraint firstItem="eVS-XE-Tan" firstAttribute="leading" secondItem="QGL-EW-vi6" secondAttribute="leadingMargin" constant="-8" id="ctF-kx-1Zg"/>
+                                        </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="eVS-XE-Tan"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="4Ii-MO-UB1"/>
+                                                <exclude reference="bQt-AV-9e2"/>
+                                                <exclude reference="ctF-kx-1Zg"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="eVS-XE-Tan"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="4Ii-MO-UB1"/>
+                                                <include reference="bQt-AV-9e2"/>
+                                                <include reference="ctF-kx-1Zg"/>
                                             </mask>
                                         </variation>
                                         <connections>

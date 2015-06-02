@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E920300CC018924FAB34B02 /* Pods_unPak_Data_Assistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		922F4B8E1B18E27F0072E470 /* PlantIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */; };
+		92B7799F1B1E269C006CBBB1 /* DataScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B7799E1B1E269C006CBBB1 /* DataScreenViewController.swift */; };
 		92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */; };
 		92BB31DE1B14EAB700A29B28 /* NewFormManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */; };
 		92BB31E01B14EAD100A29B28 /* PlantIdManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */; };
@@ -42,6 +43,7 @@
 		360FE943FCB1E4A88E807CC5 /* Pods-unPak Data Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unPak Data Assistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.debug.xcconfig"; sourceTree = "<group>"; };
 		36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unPak_Data_Assistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewCell.swift; sourceTree = "<group>"; };
+		92B7799E1B1E269C006CBBB1 /* DataScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScreenViewController.swift; sourceTree = "<group>"; };
 		92BB31D91B14E30000A29B28 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFormManagedObject.swift; sourceTree = "<group>"; };
 		92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdManagedObject.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				92FB58C01B0D7670003855EE /* FormMenuViewController.swift */,
 				92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */,
 				92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */,
+				92B7799E1B1E269C006CBBB1 /* DataScreenViewController.swift */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
 				922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */,
 				92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */,
@@ -334,6 +337,7 @@
 				92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */,
 				92BB31DE1B14EAB700A29B28 /* NewFormManagedObject.swift in Sources */,
 				92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */,
+				92B7799F1B1E269C006CBBB1 /* DataScreenViewController.swift in Sources */,
 				92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */,
 				92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */,
 				922F4B8E1B18E27F0072E470 /* PlantIdCollectionViewCell.swift in Sources */,

@@ -81,35 +81,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	
 	
-	override func viewDidAppear(animated: Bool) {
-		// Reference managed object context
-		
-		let contxt: NSManagedObjectContext = self.appDel.managedObjectContext!
-		let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
-		
-		// Local array variable containing ALL available NewFormEntity Objects
-		let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(self.fetch, error: nil)!
-		
-		// Get current form from fetchRequestArray
-		self.currentForm = fetchRequestArray.last as! NSManagedObject
-		
-		// Display form name
-		self.formNameLabel.text = self.currentForm.valueForKey("formName") as? String
-
-		
-		
-		//Test prints 
-		println("Current form properly assigned")
-		
-		
-		
-		
-		
-		
-		
-		
-	}
-	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -118,7 +89,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		self.activityIndicator.hidesWhenStopped = true
 		self.activityIndicator.color = UIColor.greenColor()
-
+		
 		
 		//Initialze tempCSVsURL
 		self.tempCSVsURL = self.rootURL!.URLByAppendingPathComponent("tempCSVs", isDirectory: true)
@@ -129,8 +100,8 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			println("Created local temp folder for CSVs")
 		}
 		
-		//Complete DBRestClient initiation 
-		self.restClient.delegate = self 
+		//Complete DBRestClient initiation
+		self.restClient.delegate = self
 		
 		
 		//Set-up alert window
@@ -143,6 +114,29 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		alert.addAction(retryButtonActionForAlertWindow)
 		
 		
+		
+		
+		// Assign form
+			// Reference managed object context
+		
+			let contxt: NSManagedObjectContext = self.appDel.managedObjectContext!
+			let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
+		
+			// Local array variable containing ALL available NewFormEntity Objects
+			let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(self.fetch, error: nil)!
+		
+			// Get current form from fetchRequestArray
+			self.currentForm = fetchRequestArray.last as! NSManagedObject
+		
+			//Test prints
+			println("Current form properly assigned")
+		
+		
+	}
+
+	override func viewDidAppear(animated: Bool) {
+		// Display form name
+		self.formNameLabel.text = self.currentForm.valueForKey("formName") as? String
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -228,12 +222,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		self.activityIndicator.stopAnimating()
 		
 		
-		
-		
-		
 		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
-		
-		
 		
 		vc.csvHeadersArray = self.csvHeaders
 		vc.csvRowsDataArray = self.csvRows
@@ -245,23 +234,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 	}
 	
-	
-	private func sendArraysToCollectionViewController (segue:UIStoryboardSegue) {
-		
-
-//		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
-//
-//		
-//		
-//		vc.csvHeadersArray = self.csvHeaders
-//		vc.csvRowsDataArray = self.csvRows
-//		vc.csvplantIdArray = self.csvFile!.columns["Plant ID"]!
-//		
-//		println("All Arrays sent")
-		
-		
-
-	}
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		self.parseCSV(self.newFileURL, segue: segue)
 		

@@ -10,6 +10,12 @@ import UIKit
 
 class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 	
+	
+	let NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID = 4
+	
+	
+	var selectedItemID:String = String()
+	
 	var numberOfItemsInRow:Int = 4
 	var numberOfRows:Int = 8
 	
@@ -25,6 +31,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		collectionView.dataSource = self
 		
 		
+		
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -37,8 +44,16 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		let cell:PlantIdCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("plantIdCell", forIndexPath: iP) as! PlantIdCollectionViewCell
 		
 		
+		var tempCellLabel:NSString  = self.csvplantIdArray[iP.row] as NSString
+		var tempCellLength:Int = tempCellLabel.length
 		
-		cell.cellLabel.text = self.csvplantIdArray[iP.row]
+		
+		if tempCellLength > self.NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID {
+			tempCellLabel = tempCellLabel.substringToIndex(self.NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID)
+			
+		}
+		
+		cell.cellLabel.text = tempCellLabel as String
 		
 		return cell
 	}
@@ -49,13 +64,25 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return UIEdgeInsetsMake(1, 1, 1, 1)
+		return UIEdgeInsetsMake(5, 5, 5, 5)
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		return CGSizeMake(50, 50)
 	}
 	
+	
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let vc:DataEntryViewController = segue.destinationViewController as! DataEntryViewController
+		
+		vc.dataPointsHeaders = self.csvHeadersArray
+		vc.plantIdLabel?.text = "Hello"
+		
+		
+		
+		
+	}
 	
 	
 	

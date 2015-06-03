@@ -162,7 +162,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			//Establish a separated thread for excuting file download and parsing
 			
 			self.downloadCurrentForm()
-			//self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
 		
 		
 		}
@@ -181,15 +180,12 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		//Parsing code added here to emphasize that file is both downloaded and then parsed,MAY NEED FURTHER STREAMLINING
 	
 	func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
-		//println("File was properly downloadedfrom:" + metadata.path)
-		//println("Saved to:" + destPath + metadata.filename)
 		println("Successful Download")
 		
 		self.statusLabel.text = "Preparing worksheet"
 		
 		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
 		
-		//println(newFileURL)
 		
 		
 		self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
@@ -205,14 +201,11 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	private func parseCSV(fileURL:NSURL,segue:UIStoryboardSegue) {
 		
-		//println("Attempting to get file from here:")
-		//println(fileURL)
 		
 		var error:NSErrorPointer = nil
 		self.csvFile = CSV(contentsOfURL: fileURL, error: error)
 		
 		
-		//println(csvFile!)
 		
 		self.csvHeaders = self.csvFile!.headers
 		
@@ -227,8 +220,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		vc.csvHeadersArray = self.csvHeaders
 		vc.csvRowsDataArray = self.csvRows
 		vc.csvplantIdArray = self.csvFile!.columns["Plant ID"]!
-		
-		println("All Arrays sent")
 		
 		
 		

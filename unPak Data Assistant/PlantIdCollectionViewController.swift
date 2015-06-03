@@ -14,7 +14,9 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	let NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID = 4
 	
 	
+	
 	var selectedItemID:String = String()
+	var selectedItemRowInfo: [String:String]!
 	
 	var numberOfItemsInRow:Int = 4
 	var numberOfRows:Int = 8
@@ -32,6 +34,16 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		
 		
 		
+	}
+	
+
+	
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		self.selectedItemRowInfo = self.csvRowsDataArray[indexPath.row]
+		self.selectedItemID = self.csvplantIdArray[indexPath.row]
+		
+		
+		self.performSegueWithIdentifier("toDataEntryFromCollectionSegue", sender: nil)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -77,7 +89,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		let vc:DataEntryViewController = segue.destinationViewController as! DataEntryViewController
 		
 		vc.dataPointsHeaders = self.csvHeadersArray
-		vc.plantIdLabel?.text = "Hello"
+		vc.rowInfoForPlantId = self.selectedItemRowInfo
 		
 		
 		

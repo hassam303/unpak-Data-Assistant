@@ -10,46 +10,41 @@ import UIKit
 
 class DataEntryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 	
-	
+	var rowInfoForPlantId:[String:String]!
 	var dataPointsHeaders:Array<String>!
 	
-	
-	@IBOutlet weak var plantIdLabel: UILabel!	
+	@IBOutlet weak var idLabel: UILabel!
 	@IBOutlet weak var tableView: UITableView!
+	
+
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		
-		println(self.dataPointsHeaders.count)
-		
-		
+		self.tableView.dataSource = self
+		println(self.rowInfoForPlantId)
 	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
-	@IBAction func pressed(sender: AnyObject) {
-		self.tableView.reloadData()
-		
-	}
+	
 	
 	//UITableView Set-Up
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.dataPointsHeaders.count
 	}
 	
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
-	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("dataPointsCell") as! UITableViewCell
+		var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("dataPointsCell") as! UITableViewCell
 		let iP = indexPath
 		cell.textLabel!.text = self.dataPointsHeaders[iP.row]
 		
 		return cell
 	}
+	
+
+	
+
 	
 	
 }

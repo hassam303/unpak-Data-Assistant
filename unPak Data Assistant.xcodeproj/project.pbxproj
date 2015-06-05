@@ -12,7 +12,7 @@
 		92B7799F1B1E269C006CBBB1 /* DataScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B7799E1B1E269C006CBBB1 /* DataScreenViewController.swift */; };
 		92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */; };
 		92BB31DE1B14EAB700A29B28 /* NewFormManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */; };
-		92BB31E01B14EAD100A29B28 /* PlantIdManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */; };
+		92BB31E01B14EAD100A29B28 /* CurrentFormDBManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB31DF1B14EAD100A29B28 /* CurrentFormDBManagedObject.swift */; };
 		92C09AB71B0681DA00D7A15B /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */; };
 		92C09AB91B0681FE00D7A15B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09AB81B0681FE00D7A15B /* Security.framework */; };
 		92C09ABB1B06820700D7A15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C09ABA1B06820700D7A15B /* QuartzCore.framework */; };
@@ -24,9 +24,10 @@
 		92DAD2A41B066EF40005E8B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A31B066EF40005E8B9 /* Images.xcassets */; };
 		92DAD2A71B066EF40005E8B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */; };
 		92DAD2B31B066EF40005E8B9 /* unPak_Data_AssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD2B21B066EF40005E8B9 /* unPak_Data_AssistantTests.swift */; };
-		92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */; };
+		92EA212A1B0FC5760031DB0A /* DataPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA21291B0FC5760031DB0A /* DataPointsViewController.swift */; };
 		92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */; };
 		92FB58C11B0D7670003855EE /* FormMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FB58C01B0D7670003855EE /* FormMenuViewController.swift */; };
+		92FBD0641B21E50C00564064 /* CurrentFormEntityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FBD0631B21E50C00564064 /* CurrentFormEntityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,7 @@
 		92B7799E1B1E269C006CBBB1 /* DataScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScreenViewController.swift; sourceTree = "<group>"; };
 		92BB31D91B14E30000A29B28 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFormManagedObject.swift; sourceTree = "<group>"; };
-		92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdManagedObject.swift; sourceTree = "<group>"; };
+		92BB31DF1B14EAD100A29B28 /* CurrentFormDBManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentFormDBManagedObject.swift; sourceTree = "<group>"; };
 		92C09AB61B0681DA00D7A15B /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		92C09AB81B0681FE00D7A15B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		92C09ABA1B06820700D7A15B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -63,9 +64,10 @@
 		92DAD2B11B066EF40005E8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DAD2B21B066EF40005E8B9 /* unPak_Data_AssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unPak_Data_AssistantTests.swift; sourceTree = "<group>"; };
 		92DAD2BC1B0675DE0005E8B9 /* unPak Data Assistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unPak Data Assistant-Bridging-Header.h"; sourceTree = "<group>"; };
-		92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryViewController.swift; sourceTree = "<group>"; };
+		92EA21291B0FC5760031DB0A /* DataPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointsViewController.swift; sourceTree = "<group>"; };
 		92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewController.swift; sourceTree = "<group>"; };
 		92FB58C01B0D7670003855EE /* FormMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormMenuViewController.swift; sourceTree = "<group>"; };
+		92FBD0631B21E50C00564064 /* CurrentFormEntityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentFormEntityService.swift; sourceTree = "<group>"; };
 		ED9F88319F191E81704EDA35 /* Pods-unPak Data Assistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unPak Data Assistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,13 +135,14 @@
 				92DAD29E1B066EF40005E8B9 /* FirstViewController.swift */,
 				92FB58C01B0D7670003855EE /* FormMenuViewController.swift */,
 				92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */,
-				92EA21291B0FC5760031DB0A /* DataEntryViewController.swift */,
+				92EA21291B0FC5760031DB0A /* DataPointsViewController.swift */,
 				92B7799E1B1E269C006CBBB1 /* DataScreenViewController.swift */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
 				922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */,
+				92FBD0631B21E50C00564064 /* CurrentFormEntityService.swift */,
 				92BB31D81B14E30000A29B28 /* Model.xcdatamodeld */,
 				92BB31DD1B14EAB700A29B28 /* NewFormManagedObject.swift */,
-				92BB31DF1B14EAD100A29B28 /* PlantIdManagedObject.swift */,
+				92BB31DF1B14EAD100A29B28 /* CurrentFormDBManagedObject.swift */,
 				92DAD2A31B066EF40005E8B9 /* Images.xcassets */,
 				92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */,
 				92DAD29A1B066EF40005E8B9 /* Supporting Files */,
@@ -333,10 +336,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92BB31E01B14EAD100A29B28 /* PlantIdManagedObject.swift in Sources */,
+				92BB31E01B14EAD100A29B28 /* CurrentFormDBManagedObject.swift in Sources */,
 				92DAD29F1B066EF40005E8B9 /* FirstViewController.swift in Sources */,
 				92BB31DE1B14EAB700A29B28 /* NewFormManagedObject.swift in Sources */,
-				92EA212A1B0FC5760031DB0A /* DataEntryViewController.swift in Sources */,
+				92FBD0641B21E50C00564064 /* CurrentFormEntityService.swift in Sources */,
+				92EA212A1B0FC5760031DB0A /* DataPointsViewController.swift in Sources */,
 				92B7799F1B1E269C006CBBB1 /* DataScreenViewController.swift in Sources */,
 				92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */,
 				92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */,

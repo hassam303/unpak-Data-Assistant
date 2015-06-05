@@ -1,5 +1,5 @@
 //
-//  DataEntryViewController.swift
+//  DataPointsViewController.swift
 //  unPak Data Assistant
 //
 //  Created by Hassam Solano on 5/22/15.
@@ -8,20 +8,28 @@
 
 import UIKit
 
-class DataEntryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class DataPointsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+	
+	let NAVIGATION_TITLE:String = "Data Points"
 	
 	var rowInfoForPlantId:[String:String]!
 	var dataPointsHeaders:Array<String>!
+	var plantID:String!
 	
 	@IBOutlet weak var idLabel: UILabel!
 	@IBOutlet weak var tableView: UITableView!
 	
 
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.tableView.dataSource = self
-		println(self.rowInfoForPlantId)
+		self.plantID = self.rowInfoForPlantId ["Plant ID"]
+		self.idLabel.text = self.plantID
+		
+	}
+	override func viewDidAppear(animated: Bool) {
+		navigationItem.title = self.NAVIGATION_TITLE
 	}
 	
 	override func didReceiveMemoryWarning() {

@@ -11,7 +11,8 @@ import UIKit
 class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 	
 	
-	let NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID = 4
+	let NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID:Int = 4
+	let NAVIGATION_TITLE:String = "Plant IDs"
 	
 	
 	
@@ -36,19 +37,21 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		
 	}
 	
+	
+	override func viewDidAppear(animated: Bool) {
+		navigationItem.title = self.NAVIGATION_TITLE
+	}
+	
 
 	
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		self.selectedItemRowInfo = self.csvRowsDataArray[indexPath.row]
-		self.selectedItemID = self.csvplantIdArray[indexPath.row]
-		
-		
-		self.performSegueWithIdentifier("toDataEntryFromCollectionSegue", sender: nil)
-	}
+
+	
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
+
+	
 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let iP:NSIndexPath = indexPath
@@ -64,6 +67,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 			tempCellLabel = tempCellLabel.substringToIndex(self.NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID)
 			
 		}
+		
 		
 		cell.cellLabel.text = tempCellLabel as String
 		
@@ -86,13 +90,17 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let vc:DataEntryViewController = segue.destinationViewController as! DataEntryViewController
+		let vc:DataPointsViewController = segue.destinationViewController as! DataPointsViewController
+		
+		var indexPath = self.collectionView.indexPathsForSelectedItems()[0] as! NSIndexPath
+		
+		self.selectedItemRowInfo = self.csvRowsDataArray[indexPath.row]
+		self.selectedItemID = self.csvplantIdArray[indexPath.row]
 		
 		vc.dataPointsHeaders = self.csvHeadersArray
 		vc.rowInfoForPlantId = self.selectedItemRowInfo
 		
-		
-		
+
 		
 	}
 	

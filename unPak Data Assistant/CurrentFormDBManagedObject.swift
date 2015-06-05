@@ -1,5 +1,5 @@
 //
-//  PlantIdManagedObject.swift
+//  CurrentFormDBManagedObject.swift
 //  unPak Data Assistant
 //
 //  Created by Hassam Solano on 5/26/15.
@@ -9,12 +9,20 @@
 import UIKit
 import CoreData
 
-@objc(PlantIdManagedObject)
+@objc(CurrentFormDBManagedObject)
 
-class PlantIdManagedObject: NSManagedObject {
-	@NSManaged	var plantId: String
+class CurrentFormDBManagedObject: NSManagedObject {
+	@NSManaged	var userInitials:String
+	@NSManaged	var formPath:String
+	@NSManaged	var formName:String
+	
+	@NSManaged	var headers:[String]
+	@NSManaged	var plantIds:[String]
+	@NSManaged	var rowInfo:[Dictionary<String, String>]
+	
 	
 	override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
 		super.init(entity: entity, insertIntoManagedObjectContext: context)
 	}
+	
 }

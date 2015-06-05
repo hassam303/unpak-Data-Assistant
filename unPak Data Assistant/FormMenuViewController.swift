@@ -12,6 +12,8 @@ import SwiftCSV
 
 class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
+	let NAVIGATION_TITLE:String = "Form Menu"
+	
 	// Variables used to download CSV file to local directories
 	
 		// Local Objects
@@ -135,6 +137,9 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	}
 
 	override func viewDidAppear(animated: Bool) {
+		
+		navigationItem.title = self.NAVIGATION_TITLE
+		
 		// Display form name
 		self.formNameLabel.text = self.currentForm.valueForKey("formName") as? String
 	}

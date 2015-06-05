@@ -13,6 +13,8 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	let NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID:Int = 4
 	let NAVIGATION_TITLE:String = "Plant IDs"
+	var formService:CurrentFormEntityService!
+
 	
 	
 	
@@ -32,7 +34,8 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		collectionView.dataSource = self
-		
+		self.csvplantIdArray = self.formService.getPlantIds()!
+		self.csvRowsDataArray = self.formService.getRowsInfo()
 		
 		
 	}
@@ -42,17 +45,12 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		navigationItem.title = self.NAVIGATION_TITLE
 	}
 	
-
-	
-
-	
-	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 
 	
-
+	// Collection view set-up methods
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let iP:NSIndexPath = indexPath
 		
@@ -92,12 +90,13 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		let vc:DataPointsViewController = segue.destinationViewController as! DataPointsViewController
 		
+		vc.formService = self.formService
+
+		
 		var indexPath = self.collectionView.indexPathsForSelectedItems()[0] as! NSIndexPath
 		
 		self.selectedItemRowInfo = self.csvRowsDataArray[indexPath.row]
-		self.selectedItemID = self.csvplantIdArray[indexPath.row]
 		
-		vc.dataPointsHeaders = self.csvHeadersArray
 		vc.rowInfoForPlantId = self.selectedItemRowInfo
 		
 

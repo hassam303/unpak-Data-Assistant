@@ -14,36 +14,27 @@ class CurrentFormEntityService {
 	
 	// Reference to AppDelegate
 	
-	let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-	let fetch: NSFetchRequest = NSFetchRequest(entityName:"CurrentFormDB")
+	private let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+	private let fetch: NSFetchRequest = NSFetchRequest(entityName:"CurrentFormDB")
 
-	var contxt: NSManagedObjectContext
-	var ent: NSEntityDescription
+	private var contxt: NSManagedObjectContext
+	private var ent: NSEntityDescription
 	
-	var form: CurrentFormDBManagedObject!
+	private var form: CurrentFormDBManagedObject!
 	
 	
 	// Form variables 
-	var headers:[String]!
-	var plantIds:[String]!
-	var rowsInfo:[Dictionary<String, String>]!
+	private var headers:[String]!
+	private var plantIds:[String]!
+	private var rowsInfo:[Dictionary<String, String>]!
 	
-	var userInitials:String!
-	var formPath:String!
-	var formName:String!
+	private var userInitials:String!
+	private var formPath:String!
+	private var formName:String!
 	
 
 	
 	init(useLatest:Bool) {
-		
-		// Initiate form Attributes 
-		self.headers	= Array<String>()
-		self.plantIds	= Array<String>()
-		self.rowsInfo	= Array<Dictionary<String,String>>()
-		
-		self.userInitials = String()
-		self.formPath	= String ()
-		self.formName	= String ()
 		
 		// Reference managed object context
 		self.contxt		= self.appDel.managedObjectContext!
@@ -78,10 +69,6 @@ class CurrentFormEntityService {
 			// Get current form from fetchRequestArray
 			self.form = fetchRequestArray.last as! CurrentFormDBManagedObject
 			
-			//Test prints
-			println("Current form properly assigned")
-			
-			
 		}
 		
 		else{
@@ -94,61 +81,70 @@ class CurrentFormEntityService {
 	private func createForm(){
 		// Create instatance of data model and initialize
 		self.form		= CurrentFormDBManagedObject(entity: self.ent, insertIntoManagedObjectContext: self.contxt)
+		self.contxt.save(nil)
 		
 	}
 	
 	
 	// Setting methods for form attributes
 	func setHeaders(headersArray:[String]) -> Void{
-		self.headers = headersArray
+		self.form.headers = headersArray
+		
+		
 		
 		// Save context
 		
 		contxt.save(nil)
+		self.syncHeaders()
 		
 	}
 	
 	func setPlantIds(plantIdArray:[String]) -> Void{
-		self.plantIds = plantIdArray
+		self.form.plantIds = plantIdArray
 		
 		// Save context
 		
 		contxt.save(nil)
+		self.syncPlantIds()
 	}
 	
 	func setRowInfo(rowInfoArray:[Dictionary<String, String>]) -> Void {
-		self.rowsInfo = rowInfoArray
+		self.form.rowsInfo = rowInfoArray
 		
 		// Save context
 		
 		contxt.save(nil)
+		self.syncRowsInfo()
 		
 	}
 	
 	func setInitials(initials:String) -> Void{
-		self.userInitials = initials
+		self.form.userInitials = initials
 		
 		// Save context
 		
 		contxt.save(nil)
+		self.syncUserInitials()
 		
 	}
 
 	func setPath(path:String) -> Void{
-		self.formPath = path
+		self.form.setValue(path, forKey: "formPath")
 		
 		// Save context
 		
 		contxt.save(nil)
+		self.syncFormPath()
 		
 	}
 
 	func setName(name:String) -> Void{
-		self.formName = name
+		self.form.formName = name
 		
 		// Save context
 		
 		contxt.save(nil)
+		self.syncFormName()
 		
 	}
 
@@ -157,7 +153,7 @@ class CurrentFormEntityService {
 	// Getting methods for form attributes 
 		//All methods return and optional object. If value is empty
 	func getHeaders() -> [String]?{
-		if !self.headers.isEmpty{
+		if self.headers != nil{
 			return self.headers
 		}
 		
@@ -167,44 +163,30 @@ class CurrentFormEntityService {
 	
 	func getPlantIds() -> [String]?{
 		
-		if !self.plantIds.isEmpty{
+		if self.plantIds != nil{
 			return self.plantIds
 		}
 		
-		return nil
+		return self.form.plantIds
 		
 	}
 	
 	func getRowsInfo() -> [Dictionary<String, String>]?{
-		if !self.rowsInfo.isEmpty{
-			return self.rowsInfo
-		}
-		
-		return nil
+		return self.form.rowsInfo
 	}
 	
 	func getUserInitials() -> String?{
-		if !self.userInitials.isEmpty{
-			return self.userInitials
-		}
-		
-		return nil
+		return self.form.userInitials
 	}
 	
 	func getFormPath() -> String?{
-		if !self.formPath.isEmpty{
-			return self.formPath
-		}
-		
-		return nil
+		return self.form.formPath
 	}
 	
 	func getFormName() -> String?{
-		if !self.formName.isEmpty{
-			return self.formName
-		}
+
 		
-		return nil
+		return self.form.formName
 	}
 	
 	
@@ -218,10 +200,47 @@ class CurrentFormEntityService {
 	
 	}
 	
+	//Sync local variables from core data entity
+	
+	func syncAllData() -> Void {
+		self.headers	= self.form.headers
+		self.plantIds	= self.form.plantIds
+		self.rowsInfo	= self.form.rowsInfo
+		
+		self.userInitials = self.form.userInitials
+		self.formPath	= self.form.formPath
+		self.formName	= self.form.formName
+	}
+	
+	private func syncHeaders() -> Void {
+		self.headers	= self.form.headers
+	}
+	
+	private func syncPlantIds() -> Void {
+		self.plantIds	= self.form.plantIds
+	}
+	
+	private func syncRowsInfo() -> Void {
+		self.rowsInfo	= self.form.rowsInfo
+	}
+	
+	private func syncUserInitials() -> Void {
+		self.userInitials = self.form.userInitials
+	}
+	
+	private func syncFormPath() -> Void {
+		self.formPath	= self.form.valueForKey("formPath") as! String
+	}
+	
+	private func syncFormName() -> Void {
+		self.formName	= self.form.formName
+	}
 	
 	
 
-	
+	func description() -> String {
+		return self.form.description
+	}
 	
 	
 	

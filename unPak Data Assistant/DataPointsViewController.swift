@@ -10,10 +10,15 @@ import UIKit
 
 class DataPointsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 	
+	var formService:CurrentFormEntityService!
+	
 	let NAVIGATION_TITLE:String = "Data Points"
 	
+	//Segued in
 	var rowInfoForPlantId:[String:String]!
 	var dataPointsHeaders:Array<String>!
+	
+	
 	var plantID:String!
 	
 	@IBOutlet weak var idLabel: UILabel!
@@ -26,6 +31,8 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		self.tableView.dataSource = self
 		self.plantID = self.rowInfoForPlantId ["Plant ID"]
 		self.idLabel.text = self.plantID
+		self.dataPointsHeaders = self.formService.getHeaders()
+		
 		
 	}
 	override func viewDidAppear(animated: Bool) {
@@ -50,6 +57,14 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		return cell
 	}
 	
+	
+	//Pass formService object to DataEntryViewController 
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let vc:DataEntryViewController = segue.destinationViewController as! DataEntryViewController
+		
+		vc.formService = self.formService
+	}
 
 	
 

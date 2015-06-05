@@ -652,7 +652,7 @@
         <!--DataScreenViewController-->
         <scene sceneID="CDG-cb-hq0">
             <objects>
-                <viewController id="M1q-cW-Nne" userLabel="DataScreenViewController" customClass="DataScreenViewController" customModule="unPak_Data_Assistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M1q-cW-Nne" userLabel="DataScreenViewController" customClass="DataEntryViewController" customModule="unPak_Data_Assistant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y8y-ay-OZq"/>
                         <viewControllerLayoutGuide type="bottom" id="mKi-4Y-PKG"/>

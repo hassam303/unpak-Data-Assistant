@@ -15,6 +15,9 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 	
 	@IBOutlet weak var tableView: UITableView!
 	
+	
+	let formService:CurrentFormEntityService = CurrentFormEntityService(useLatest: false)
+	
 	var restClient:DBRestClient?
 	var availableFormsArray:[AnyObject] = Array<AnyObject>()
 	var currentFilePath:String?
@@ -115,31 +118,17 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		
 		//Segue set-up
 		
+		
 		var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
 		
-		// Reference to AppDelegate
-		
-		let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		
-		// Reference managed object context
-		
-		let contxt: NSManagedObjectContext = appDel.managedObjectContext!
-		let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
-		
-		// Create instatance of data model and initialize 
-		
-		var newForm = NewFormManagedObject(entity: ent, insertIntoManagedObjectContext: contxt)
-		
+	
+		// Transfer properties
 
-		// Map properties
-		
-		newForm.formPath = availableFormsArray[indexPath.row].path!!
-		newForm.formName = availableFormsArray[indexPath.row].filename!!
-		
-		// Save context
-		
-		contxt.save(nil)
-		println(newForm)
+		self.formService.setPath(availableFormsArray[indexPath.row].path!!)
+		self.formService.setName(availableFormsArray[indexPath.row].filename!!)
+	
+		print("CoreData Entry before segue")
+		print(self.formService.description)
 		
 	
 

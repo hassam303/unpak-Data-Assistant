@@ -12,6 +12,8 @@ import SwiftCSV
 
 class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
+	var formService:CurrentFormEntityService = CurrentFormEntityService(useLatest: true)
+	
 	let NAVIGATION_TITLE:String = "Form Menu"
 	
 	// Variables used to download CSV file to local directories
@@ -51,16 +53,16 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	
 	
-	// Class variables for CoreData
-	
-		// Reference to AppDelegate
-		let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-	
-		// Initialize fetch request object (TO: NewFormEntity)
-		let fetch: NSFetchRequest = NSFetchRequest(entityName:"NewFormEntity")
-	
-		// NSMangedObject to be recieved from CoreData after segue
-		var currentForm: NSManagedObject!
+//	// Class variables for CoreData
+//	
+//		// Reference to AppDelegate
+//		let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//	
+//		// Initialize fetch request object (TO: NewFormEntity)
+//		let fetch: NSFetchRequest = NSFetchRequest(entityName:"NewFormEntity")
+//	
+//		// NSMangedObject to be recieved from CoreData after segue
+//		var currentForm: NSManagedObject!
 	
 	
 	
@@ -86,6 +88,11 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		print("@ Form Menu form details:" + self.formService.description())
+		
+		// Display form name
+		self.formNameLabel.text = self.formService.getFormName()
 		
 		self.statusView.hidden = true
 		
@@ -118,19 +125,19 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		
 		
-		// Assign form
-			// Reference managed object context
-		
-			let contxt: NSManagedObjectContext = self.appDel.managedObjectContext!
-			let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
-		
-			// Local array variable containing ALL available NewFormEntity Objects
-			let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(self.fetch, error: nil)!
-		
-			// Get current form from fetchRequestArray
-			self.currentForm = fetchRequestArray.last as! NSManagedObject
-		
-			//Test prints
+//		// Assign form
+//			// Reference managed object context
+//		
+//			let contxt: NSManagedObjectContext = self.appDel.managedObjectContext!
+//			let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
+//		
+//			// Local array variable containing ALL available NewFormEntity Objects
+//			let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(self.fetch, error: nil)!
+//		
+//			// Get current form from fetchRequestArray
+//			self.currentForm = fetchRequestArray.last as! NSManagedObject
+//		
+//			//Test prints
 			println("Current form properly assigned")
 		
 		
@@ -140,8 +147,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		navigationItem.title = self.NAVIGATION_TITLE
 		
-		// Display form name
-		self.formNameLabel.text = self.currentForm.valueForKey("formName") as? String
+
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -158,7 +164,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		else {
 			//Set user initials to NewForm Managed object
-			self.currentForm.setValue(self.initalsTextField.text, forKey: "userInitials")
+			self.formService.setInitials(self.initalsTextField.text)
 	
 			self.statusView.hidden = false
 			self.statusLabel.text = "Downloading file from Dropbox"
@@ -167,6 +173,8 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 			//Establish a separated thread for excuting file download and parsing
 			
 			self.downloadCurrentForm()
+			
+
 		
 		
 		}
@@ -174,10 +182,16 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	
 	//Private self contained call to download current form to tempCSVs local folder for manipulation
 	private func downloadCurrentForm(){
+		
+		
+		print("Just before download")
+		print(self.formService.getFormName()!)
 
-		self.newFilePath = self.tempCSVsURL.path?.stringByAppendingPathComponent(self.currentForm.valueForKey("formName") as! String)
+		self.newFilePath = self.tempCSVsURL.path?.stringByAppendingPathComponent(self.formService.getFormName()!)
+		
+		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
 
-		self.restClient.loadFile(self.currentForm.valueForKey("formPath") as! String, intoPath: self.newFilePath)
+		self.restClient.loadFile(self.formService.getFormPath(), intoPath: self.newFilePath)
 
 	}
 	
@@ -188,14 +202,9 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		println("Successful Download")
 		
 		self.statusLabel.text = "Preparing worksheet"
+	
+		self.parseCSV(self.newFileURL)
 		
-		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
-		
-		
-		
-		self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
-
-
 		
 	
 	}
@@ -204,7 +213,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		println("File was not downloaded, whomp, whomp")
 	}
 	
-	private func parseCSV(fileURL:NSURL,segue:UIStoryboardSegue) {
+	private func parseCSV(fileURL:NSURL) {
 		
 		
 		var error:NSErrorPointer = nil
@@ -212,32 +221,28 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		
 		
-		self.csvHeaders = self.csvFile!.headers
-		
-		self.csvRows = self.csvFile!.rows
+		self.formService.setHeaders(self.csvFile!.headers)
+		self.formService.setRowInfo(self.csvFile!.rows)
+		self.formService.setPlantIds(self.csvFile!.columns["Plant ID"]!)
 		
 		self.statusLabel.text = "Done!"
 		self.activityIndicator.stopAnimating()
 		
-		
-		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
-		
-		vc.csvHeadersArray = self.csvHeaders
-		vc.csvRowsDataArray = self.csvRows
-		vc.csvplantIdArray = self.csvFile!.columns["Plant ID"]!
-		
+		self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
+
+//		vc.csvHeadersArray = self.csvHeaders
+//		vc.csvRowsDataArray = self.csvRows
+//		vc.csvplantIdArray =
 		
 		
 	}
+	
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		self.parseCSV(self.newFileURL, segue: segue)
-		
+		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
+		vc.formService = self.formService
+
 	}
 
-
-	
-
-	
 
 }

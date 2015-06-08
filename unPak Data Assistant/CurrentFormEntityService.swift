@@ -184,9 +184,11 @@ class CurrentFormEntityService {
 	}
 	
 	func getFormName() -> String?{
-
-		
 		return self.form.formName
+	}
+	
+	func getEditedRows() -> [Dictionary<String,String>]{
+		return self.form.editedRows
 	}
 	
 	

@@ -15,11 +15,16 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	let NAVIGATION_TITLE:String = "Data Points"
 	
 	//Segued in
-	var rowInfoForPlantId:[String:String]!
-	var dataPointsHeaders:Array<String>!
+	var currentIndex:Int!
 	
+	
+	//Changing variables 
+	var rowInfoForPlantId:[String:String]!
 	
 	var plantID:String!
+	var dataPointsHeaders:Array<String>!
+
+	var allRowInfo:[Dictionary<String,String>]!
 	
 	@IBOutlet weak var idLabel: UILabel!
 	@IBOutlet weak var tableView: UITableView!
@@ -28,15 +33,21 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.allRowInfo = self.formService.getRowsInfo()!
 		self.tableView.dataSource = self
-		self.plantID = self.rowInfoForPlantId ["Plant ID"]
-		self.idLabel.text = self.plantID
 		self.dataPointsHeaders = self.formService.getHeaders()
+		
+		
+		self.loadData()
 		
 		
 	}
 	override func viewDidAppear(animated: Bool) {
-		navigationItem.title = self.NAVIGATION_TITLE
+		self.loadData()
+		
+		self.tableView.reloadData()
+
+
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -45,6 +56,14 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	
 	
 	//UITableView Set-Up
+	func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return 0
+	}
+	
+	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 0
+	}
+	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.dataPointsHeaders.count
 	}
@@ -54,9 +73,29 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		let iP = indexPath
 		cell.textLabel!.text = self.dataPointsHeaders[iP.row]
 		
+		if !(self.rowInfoForPlantId[cell.textLabel!.text!]!.isEmpty){
+			cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+		}
+		
+
 		return cell
 	}
 	
+	
+	
+	//Private method for loading proper plantId + info
+	
+	private func loadData(){
+		navigationItem.title = self.NAVIGATION_TITLE
+		
+		self.rowInfoForPlantId = self.allRowInfo[self.currentIndex]
+		self.plantID = self.rowInfoForPlantId ["Plant ID"]
+		self.idLabel.text = self.plantID
+		
+		
+		
+		
+	}
 	
 	//Pass formService object to DataEntryViewController 
 	
@@ -64,9 +103,14 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		let vc:DataEntryViewController = segue.destinationViewController as! DataEntryViewController
 		
 		vc.formService = self.formService
+		vc.rowInfoForPlantId = self.rowInfoForPlantId
+		vc.currentHeaderIndex = self.tableView.indexPathForSelectedRow()?.row
 	}
 
+	@IBAction func nextWasPressed(sender: AnyObject) {
+	}
 	
+	@IBOutlet weak var previousWasPressed: UIButton!
 
 	
 	

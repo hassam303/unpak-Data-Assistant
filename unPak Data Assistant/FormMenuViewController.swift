@@ -49,25 +49,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var statusLabel: UILabel!
 	
-	
-	
-	
-	
-//	// Class variables for CoreData
-//	
-//		// Reference to AppDelegate
-//		let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//	
-//		// Initialize fetch request object (TO: NewFormEntity)
-//		let fetch: NSFetchRequest = NSFetchRequest(entityName:"NewFormEntity")
-//	
-//		// NSMangedObject to be recieved from CoreData after segue
-//		var currentForm: NSManagedObject!
-	
-	
-	
-	
-	
 	// Variables received through interface
 	var userInitials:String!
 	
@@ -125,20 +106,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		
 		
-//		// Assign form
-//			// Reference managed object context
-//		
-//			let contxt: NSManagedObjectContext = self.appDel.managedObjectContext!
-//			let ent: NSEntityDescription = NSEntityDescription.entityForName("NewFormEntity", inManagedObjectContext: contxt)!
-//		
-//			// Local array variable containing ALL available NewFormEntity Objects
-//			let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(self.fetch, error: nil)!
-//		
-//			// Get current form from fetchRequestArray
-//			self.currentForm = fetchRequestArray.last as! NSManagedObject
-//		
-//			//Test prints
-			println("Current form properly assigned")
+		println("Current form properly assigned")
 		
 		
 	}
@@ -228,8 +196,11 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		self.statusLabel.text = "Done!"
 		self.activityIndicator.stopAnimating()
 		
-		self.performSegueWithIdentifier("toCollectionFromFormSegue", sender: nil)
-
+		
+		self.goToPlantIdCollectionView()
+	
+		
+		
 //		vc.csvHeadersArray = self.csvHeaders
 //		vc.csvRowsDataArray = self.csvRows
 //		vc.csvplantIdArray =
@@ -238,10 +209,20 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	}
 	
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
-		vc.formService = self.formService
-
+//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//		let vc:PlantIdCollectionViewController = segue.destinationViewController as! PlantIdCollectionViewController
+//		vc.formService = self.formService
+//
+//	}
+	
+	private func goToPlantIdCollectionView (){
+		
+		let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("PlantIdCollectionViewController") as! PlantIdCollectionViewController
+		
+		nextView.formService = self.formService
+		
+		self.navigationController?.pushViewController(nextView, animated: true)
+		
 	}
 
 

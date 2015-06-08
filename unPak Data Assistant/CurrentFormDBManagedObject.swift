@@ -18,7 +18,8 @@ class CurrentFormDBManagedObject: NSManagedObject {
 	
 	@NSManaged	var headers:[String]
 	@NSManaged	var plantIds:[String]
-	@NSManaged	var rowsInfo:[Dictionary<String, String>]
+	@NSManaged	var rowsInfo:[Dictionary<String,String>]
+	@NSManaged	var editedRows:[Dictionary<String,String>]
 	
 	
 	override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {

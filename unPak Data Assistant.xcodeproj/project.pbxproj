@@ -24,6 +24,7 @@
 		92DAD2A41B066EF40005E8B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A31B066EF40005E8B9 /* Images.xcassets */; };
 		92DAD2A71B066EF40005E8B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DAD2A51B066EF40005E8B9 /* LaunchScreen.xib */; };
 		92DAD2B31B066EF40005E8B9 /* unPak_Data_AssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAD2B21B066EF40005E8B9 /* unPak_Data_AssistantTests.swift */; };
+		92E2082C1B27743B0041C178 /* CSVExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E2082B1B27743B0041C178 /* CSVExport.swift */; };
 		92EA212A1B0FC5760031DB0A /* DataPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA21291B0FC5760031DB0A /* DataPointsViewController.swift */; };
 		92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */; };
 		92FB58C11B0D7670003855EE /* FormMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FB58C01B0D7670003855EE /* FormMenuViewController.swift */; };
@@ -64,6 +65,7 @@
 		92DAD2B11B066EF40005E8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92DAD2B21B066EF40005E8B9 /* unPak_Data_AssistantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unPak_Data_AssistantTests.swift; sourceTree = "<group>"; };
 		92DAD2BC1B0675DE0005E8B9 /* unPak Data Assistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unPak Data Assistant-Bridging-Header.h"; sourceTree = "<group>"; };
+		92E2082B1B27743B0041C178 /* CSVExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVExport.swift; sourceTree = "<group>"; };
 		92EA21291B0FC5760031DB0A /* DataPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointsViewController.swift; sourceTree = "<group>"; };
 		92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewController.swift; sourceTree = "<group>"; };
 		92FB58C01B0D7670003855EE /* FormMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormMenuViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				92FB58C01B0D7670003855EE /* FormMenuViewController.swift */,
 				92EA212B1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift */,
 				92EA21291B0FC5760031DB0A /* DataPointsViewController.swift */,
+				92E2082B1B27743B0041C178 /* CSVExport.swift */,
 				92B7799E1B1E269C006CBBB1 /* DataEntryViewController.swift */,
 				92DAD2A01B066EF40005E8B9 /* Main.storyboard */,
 				922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */,
@@ -344,6 +347,7 @@
 				92B7799F1B1E269C006CBBB1 /* DataEntryViewController.swift in Sources */,
 				92BB31DA1B14E30000A29B28 /* Model.xcdatamodeld in Sources */,
 				92EA212C1B0FCAD90031DB0A /* PlantIdCollectionViewController.swift in Sources */,
+				92E2082C1B27743B0041C178 /* CSVExport.swift in Sources */,
 				922F4B8E1B18E27F0072E470 /* PlantIdCollectionViewCell.swift in Sources */,
 				92DAD29D1B066EF40005E8B9 /* AppDelegate.swift in Sources */,
 				92FB58C11B0D7670003855EE /* FormMenuViewController.swift in Sources */,

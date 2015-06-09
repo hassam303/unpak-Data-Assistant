@@ -17,6 +17,10 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	//Segued in
 	var currentIndex:Int!
 	
+	//From DataEntry
+	
+	var editedRowInfoExsists:Bool!
+	
 	
 	//Changing variables 
 	var rowInfoForPlantId:[String:String]!
@@ -28,15 +32,16 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	
 	@IBOutlet weak var idLabel: UILabel!
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var nextButton: UIButton!
+	@IBOutlet weak var previousButton: UIButton!
 	
-
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.allRowInfo = self.formService.getRowsInfo()!
 		self.tableView.dataSource = self
+		self.tableView.delegate = self
 		self.dataPointsHeaders = self.formService.getHeaders()
-		
 		
 		self.loadData()
 		
@@ -44,10 +49,6 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	}
 	override func viewDidAppear(animated: Bool) {
 		self.loadData()
-		
-		self.tableView.reloadData()
-
-
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -73,8 +74,12 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		let iP = indexPath
 		cell.textLabel!.text = self.dataPointsHeaders[iP.row]
 		
-		if !(self.rowInfoForPlantId[cell.textLabel!.text!]!.isEmpty){
+		if !(self.rowInfoForPlantId[self.dataPointsHeaders[iP.row]]!.isEmpty){
 			cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+		}
+		
+		else{
+			cell.accessoryType = UITableViewCellAccessoryType.None
 		}
 		
 
@@ -82,15 +87,54 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	}
 	
 	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		self.goToDataEntryView(indexPath)
+	}
+	
 	
 	//Private method for loading proper plantId + info
 	
 	private func loadData(){
 		navigationItem.title = self.NAVIGATION_TITLE
 		
-		self.rowInfoForPlantId = self.allRowInfo[self.currentIndex]
-		self.plantID = self.rowInfoForPlantId ["Plant ID"]
+		self.plantID = self.allRowInfo[self.currentIndex]["Plant ID"]
 		self.idLabel.text = self.plantID
+
+		
+		//Logic for determining whether to use CSV rowInfo or previousEdited info
+		var editedData = self.formService.getEditedRows()[self.plantID]
+		
+		if (editedData != nil){
+			self.rowInfoForPlantId = editedData
+		}
+			
+		else {
+			self.rowInfoForPlantId = self.allRowInfo[self.currentIndex]
+			
+		}
+		
+		
+		
+		//Switch to perform logic concering the appearance of the Next and Previous buttons
+		switch self.currentIndex {
+		case (self.formService.getPlantIds()!.count - 1) :
+			self.nextButton.hidden = true
+			break
+			
+		case 0 :
+			self.previousButton.hidden = true
+			break
+			
+		default:
+			self.nextButton.hidden = false
+			self.previousButton.hidden = false
+			break
+			
+		}
+		
+		
+		self.tableView.reloadData()
+
 		
 		
 		
@@ -99,18 +143,47 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	
 	//Pass formService object to DataEntryViewController 
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let vc:DataEntryViewController = segue.destinationViewController as! DataEntryViewController
+	private func goToDataEntryView(indexPath:NSIndexPath){
 		
-		vc.formService = self.formService
-		vc.rowInfoForPlantId = self.rowInfoForPlantId
-		vc.currentHeaderIndex = self.tableView.indexPathForSelectedRow()?.row
-	}
-
-	@IBAction func nextWasPressed(sender: AnyObject) {
+		let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("DataEntryViewController") as! DataEntryViewController
+		
+		nextView.formService = self.formService
+		
+		nextView.rowInfoForPlantId = self.rowInfoForPlantId
+		nextView.currentHeaderIndex = indexPath.row
+		nextView.currentPlantId = self.plantID
+		
+		
+		self.navigationController?.pushViewController(nextView, animated: true)
+		
 	}
 	
-	@IBOutlet weak var previousWasPressed: UIButton!
+	
+	
+	
+	
+	
+	//UIButton logic 
+	@IBAction func saveButtonPressed(sender: AnyObject) {
+		
+		
+		
+		
+	}
+	
+	@IBAction func nextWasPressed(sender: AnyObject) {
+		
+		++self.currentIndex!
+		self.loadData()
+		
+		
+	}
+	
+	@IBAction func previousButtonPressed(sender: AnyObject) {
+		--self.currentIndex!
+		self.loadData()
+
+	}
 
 	
 	

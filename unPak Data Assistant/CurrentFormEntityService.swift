@@ -27,6 +27,7 @@ class CurrentFormEntityService {
 	private var headers:[String]!
 	private var plantIds:[String]!
 	private var rowsInfo:[Dictionary<String, String>]!
+	private var editedRows: Dictionary <String,Dictionary<String,String>>!
 	
 	private var userInitials:String!
 	private var formPath:String!
@@ -148,6 +149,13 @@ class CurrentFormEntityService {
 		
 	}
 
+	func addEditedRow(plantId:String,dictionary: Dictionary<String,String>) {
+		self.form.editedRows.updateValue(dictionary, forKey: plantId)
+		
+		//Save context 
+		contxt.save(nil)
+		self.syncEditedRows()
+	}
 	
 	
 	// Getting methods for form attributes 
@@ -187,7 +195,7 @@ class CurrentFormEntityService {
 		return self.form.formName
 	}
 	
-	func getEditedRows() -> [Dictionary<String,String>]{
+	func getEditedRows() -> Dictionary <String,Dictionary<String,String>> {
 		return self.form.editedRows
 	}
 	
@@ -208,6 +216,7 @@ class CurrentFormEntityService {
 		self.headers	= self.form.headers
 		self.plantIds	= self.form.plantIds
 		self.rowsInfo	= self.form.rowsInfo
+		self.editedRows = self.form.editedRows
 		
 		self.userInitials = self.form.userInitials
 		self.formPath	= self.form.formPath
@@ -236,6 +245,10 @@ class CurrentFormEntityService {
 	
 	private func syncFormName() -> Void {
 		self.formName	= self.form.formName
+	}
+	
+	private func syncEditedRows() -> Void {
+		self.editedRows = self.form.editedRows
 	}
 	
 	

@@ -16,7 +16,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	var formService:CurrentFormEntityService!
 
 	
-	var editedRows:[Dictionary<String,String>]!
+	var editedRows:Dictionary<String,Dictionary<String,String>>!
 	
 	var selectedItemID:String = String()
 	var selectedItemRowInfo: [String:String]!
@@ -50,9 +50,10 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		navigationItem.title = self.NAVIGATION_TITLE
 		
 		self.editedRows = self.formService.getEditedRows()
+		print(self.formService.getEditedRows())
 		
-		if self.editedRows == nil || self.editedRows.isEmpty{
-			self.uploadButton.enabled = false
+		if !self.editedRows.isEmpty {
+			self.uploadButton.enabled = true 
 			
 		}
 	}
@@ -67,6 +68,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		let iP:NSIndexPath = indexPath
 		
 		let cell:PlantIdCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("plantIdCell", forIndexPath: iP) as! PlantIdCollectionViewCell
+		
 		
 		cell.selected = false 
 		

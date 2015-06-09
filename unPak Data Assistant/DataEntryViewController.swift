@@ -13,9 +13,11 @@ class DataEntryViewController: UIViewController {
 	var headers:[String]!
 	var rowInfoForPlantId:[String:String]!
 	
+	var editedRows:Dictionary<String,Dictionary<String,String>>!
 	
 	var currentHeaderIndex:Int!
 	var currentDataPointTitle:String!
+	var currentPlantId:String!
 	var startData:String!
 	var newData:String!
 	
@@ -25,6 +27,7 @@ class DataEntryViewController: UIViewController {
 	
 	@IBOutlet weak var nextButton: UIButton!
 	@IBOutlet weak var previousButton: UIButton!
+	@IBOutlet weak var saveButton: UIBarButtonItem!
 
 	@IBOutlet weak var navigationTitleBar: UINavigationItem!
 	@IBOutlet weak var textSwitch: UISwitch!
@@ -64,6 +67,7 @@ class DataEntryViewController: UIViewController {
 		self.commentTextField.placeholder = self.TEXT_FIELD_PLACEHOLDER
 		
 		self.headers = self.formService.getHeaders()
+		self.editedRows = self.formService.getEditedRows()
 
 		
 		//Set-up alert window
@@ -93,10 +97,9 @@ class DataEntryViewController: UIViewController {
 		self.loadData()
 	}
 	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-	}
 	
+	
+	//UI related logic methods
 	@IBAction func previousButtonWasPressed(sender: AnyObject) {
 		
 		if self.checkDataForSave(self.getTextFieldInput()){
@@ -128,7 +131,13 @@ class DataEntryViewController: UIViewController {
 			self.saveData()
 		}
 		
-		self.performSegueWithIdentifier("backToDataPointsSegue", sender: nil)
+		if self.view2.hidden{
+			self.numberTextField.resignFirstResponder()
+		}
+		else{
+			self.commentTextField.resignFirstResponder()
+		}
+		
 	}
 	
 	@IBAction func switchTriggered(sender: AnyObject) {
@@ -146,6 +155,21 @@ class DataEntryViewController: UIViewController {
 		
 	}
 
+	@IBAction func numberValueChanged(sender: AnyObject) {
+		self.navigationItem.hidesBackButton = true
+		self.saveButton.enabled = true
+		
+		
+	}
+	
+	@IBAction func textValueChanged(sender: AnyObject) {
+		self.navigationItem.hidesBackButton = true
+		self.saveButton.enabled = true
+	}
+	
+	
+	
+	//Private convenience methods relating to current data and view set-up
 	
 	private func checkDataForSave(testData:String) -> Bool {
 		var rtnval:Bool = false
@@ -183,26 +207,29 @@ class DataEntryViewController: UIViewController {
 	}
 	
 	private func saveData(){
-			self.rowInfoForPlantId[self.headers[self.currentHeaderIndex]] = self.newData
+		self.rowInfoForPlantId[self.headers[self.currentHeaderIndex]] = self.newData
+		
+		self.formService.addEditedRow(currentPlantId, dictionary: self.rowInfoForPlantId)
+		
+		self.navigationItem.hidesBackButton = false
+		
+		self.loadData()
 
 	}
+
+	
 	
 	private func loadData(){
 		self.currentDataPointTitle = self.headers[self.currentHeaderIndex]
 		
 		self.navigationTitleBar.title = self.currentDataPointTitle
 		
+		
 		self.startData = self.rowInfoForPlantId[self.currentDataPointTitle]
 		
-		
-		print("End index: " , self.headers.endIndex)
-		print("Current " + String(self.currentHeaderIndex))
-
-		
+		self.saveButton.enabled = false
 		
 		switch self.currentHeaderIndex! {
-		
-		
 		case self.headers.count - 1  :
 			self.nextButton.hidden = true
 			
@@ -232,16 +259,6 @@ class DataEntryViewController: UIViewController {
 		}
 		
 		
-		
-		
-	}
-	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		println("Seguing back")
-		
-		var vc:DataPointsViewController = segue.destinationViewController as! DataPointsViewController
-		vc.formService = self.formService
-		vc.rowInfoForPlantId = self.rowInfoForPlantId
 		
 		
 	}

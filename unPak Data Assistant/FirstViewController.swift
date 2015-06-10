@@ -127,8 +127,6 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		self.formService.setPath(availableFormsArray[indexPath.row].path!!)
 		self.formService.setName(availableFormsArray[indexPath.row].filename!!)
 	
-		print("CoreData Entry before segue")
-		print(self.formService.description)
 		
 	
 

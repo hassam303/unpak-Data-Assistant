@@ -10,9 +10,12 @@ import UIKit
 
 class CSVExport: NSObject, DBRestClientDelegate{
 	
-	let restClient:DBRestClient = DBRestClient(session: DBSession.sharedSession())
-	let fileManager:NSFileManager = NSFileManager.defaultManager()
+	private let restClient:DBRestClient = DBRestClient(session: DBSession.sharedSession())
+	private let fileManager:NSFileManager = NSFileManager.defaultManager()
+	private let rootfolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+	private var fileHandle:NSFileHandle!
 	
+	var filename:String
 
 	var localFilePath:String
 	
@@ -22,14 +25,18 @@ class CSVExport: NSObject, DBRestClientDelegate{
 	
 	var plantIdKeys:[String]
 	
-	let rootfolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
 
 	
 	init(formService:CurrentFormEntityService){
 		
+		
 		self.formService = formService
 		self.editedRows = formService.getEditedRows()
 		self.plantIdKeys = self.editedRows.keys.array
+		
+		
+		
+		
 		
 		
 		//Create a new file
@@ -41,90 +48,105 @@ class CSVExport: NSObject, DBRestClientDelegate{
 			self.fileManager.createDirectoryAtPath(newFolderPath, withIntermediateDirectories: true, attributes: nil, error: nil)
 		}
 		
+		var shortenedFileName:String = self.formService.getFormName()!
+		shortenedFileName = shortenedFileName.stringByDeletingPathExtension
 		
-		self.localFilePath = newFolderPath.stringByAppendingPathComponent(self.formService.getFormName()! + "_" + self.formService.getUserInitials()!)
+		var timestamp:String = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.ShortStyle , timeStyle: NSDateFormatterStyle.ShortStyle)
+		timestamp = timestamp.stringByReplacingOccurrencesOfString("/", withString: ".", options: nil, range: nil)
+		timestamp = timestamp.stringByReplacingOccurrencesOfString(",", withString: "@", options: nil, range: nil)
+		timestamp = timestamp.stringByReplacingOccurrencesOfString(":", withString: ".", options: nil, range: nil)
+		timestamp = timestamp.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		
 		
-
-//		if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {
-//			outputStream.open()
-//			let text = "some text"
-//			outputStream.write(text)
-//			
-//			outputStream.close()
-//		} else {
-//			println("Unable to open file")
-//		}
+		self.localFilePath = newFolderPath.stringByAppendingPathComponent(shortenedFileName + "_" + self.formService.getUserInitials()! + "_" + timestamp + ".csv")
+		self.fileManager.createFileAtPath(self.localFilePath, contents: nil, attributes: nil)
 
 		
+		self.filename = self.localFilePath.pathComponents.last!
+			
+			
 		
-		
-		
-		
-		
-		
-		
+
 		
 		
 		
 	}
 	
 	
-	private func prepareCSV(){
+	func prepareCSV(){
 		
-		var currentString:String = String()
+		self.restClient.loadMetadata("/")
+
+		
+		var currentHeaders:String = String()
+		var currentData:String = String()
 		
 		var formHeaders:[String] = self.formService.getHeaders()!
 		
 		var currentRowInfo:Dictionary<String,String>
-		var currentRowInfoKeys:[String]
+		
+		
+		
+		var writeData:NSData
+		self.fileHandle = NSFileHandle(forWritingAtPath: self.localFilePath)!
+		self.fileHandle.seekToEndOfFile()
+
+		
+		
+		
 		
 		//Add headers row
 		for header in formHeaders{
-			currentString += header
+			currentHeaders += header
 			
 			if header == formHeaders.last{
-				currentString += ","
+				break
 			}
 	
-			
+			currentHeaders += ","
 		}
+		currentHeaders += "\n"
 		
+		writeData = currentHeaders.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
 		
-		println(currentString)
+		self.fileHandle.writeData(writeData)
+		
 		
 		//Add data rows
-		for pIDKey in self.plantIdKeys {
+		var sortedKeys = sorted(self.plantIdKeys, { (str1:String, str2:String) -> Bool in
+			return str1 < str2
+		})
+		
+		
+		for pIDKey in sortedKeys {
 			currentRowInfo = self.editedRows[pIDKey]!
 			
 			
 			for key in formHeaders{
 				
-				currentString += currentRowInfo[key]!
+				currentData += currentRowInfo[key]!
 				
 				if key == formHeaders.last{
 					break
 				}
 				
-				currentString += ","
-				
-				
+				currentData += ","
 			}
+			
+			currentData += "\n"
+			
+			writeData = currentData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+			fileHandle.writeData(writeData)
+			
+			
+			currentData = String()
 		}
 		
 		
-		
+		self.fileHandle.closeFile()
 	}
-	
-	
-	private func uploadToDropbox(fromPath:String){
-	
-		
-	}
-	
-	
-	
-	
+
+
 	
 	
 	

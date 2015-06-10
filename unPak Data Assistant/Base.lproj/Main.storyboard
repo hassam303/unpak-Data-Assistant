@@ -525,7 +525,17 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="FIl-f6-CGj">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Upload changes" id="KgJ-5h-wlh"/>
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="miR-SX-5HV">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Upload changes" id="KgJ-5h-wlh">
+                            <connections>
+                                <action selector="uploadWasPressed:" destination="Xsh-rt-0sd" id="gwQ-VR-zdh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="HUm-LW-4ic" id="3TA-iV-J1u"/>

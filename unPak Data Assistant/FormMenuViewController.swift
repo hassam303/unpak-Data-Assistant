@@ -70,7 +70,6 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		print("@ Form Menu form details:" + self.formService.description())
 		
 		// Display form name
 		self.formNameLabel.text = self.formService.getFormName()
@@ -102,12 +101,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		retryButtonActionForAlertWindow = UIAlertAction(title: "Retry", style: retryButtonActionStyle, handler: nil)
 		
 		alert.addAction(retryButtonActionForAlertWindow)
-		
-		
-		
-		
-		println("Current form properly assigned")
-		
+	
 		
 	}
 
@@ -132,7 +126,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		else {
 			//Set user initials to NewForm Managed object
-			self.formService.setInitials(self.initalsTextField.text)
+			self.formService.setInitials(self.initalsTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
 	
 			self.statusView.hidden = false
 			self.statusLabel.text = "Downloading file from Dropbox"
@@ -151,15 +145,13 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	//Private self contained call to download current form to tempCSVs local folder for manipulation
 	private func downloadCurrentForm(){
 		
-		
-		print("Just before download")
-		print(self.formService.getFormName()!)
 
 		self.newFilePath = self.tempCSVsURL.path?.stringByAppendingPathComponent(self.formService.getFormName()!)
 		
 		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
 
 		self.restClient.loadFile(self.formService.getFormPath(), intoPath: self.newFilePath)
+		
 
 	}
 	
@@ -167,7 +159,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		//Parsing code added here to emphasize that file is both downloaded and then parsed,MAY NEED FURTHER STREAMLINING
 	
 	func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
-		println("Successful Download")
+		println("Successful Download\n")
 		
 		self.statusLabel.text = "Preparing worksheet"
 	

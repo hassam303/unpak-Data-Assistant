@@ -8,8 +8,10 @@
 
 import UIKit
 
-class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DBRestClientDelegate {
 	
+	let restClient:DBRestClient = DBRestClient(session: DBSession.sharedSession())
+
 	
 	let NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID:Int = 4
 	let NAVIGATION_TITLE:String = "Plant IDs"
@@ -38,6 +40,9 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		collectionView.dataSource = self
 		collectionView.delegate = self
 		
+		self.restClient.delegate = self
+
+		
 		self.csvplantIdArray = self.formService.getPlantIds()!
 		self.csvRowsDataArray = self.formService.getRowsInfo()
 		self.navigationItem.hidesBackButton = true
@@ -50,7 +55,6 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		navigationItem.title = self.NAVIGATION_TITLE
 		
 		self.editedRows = self.formService.getEditedRows()
-		print(self.formService.getEditedRows())
 		
 		if !self.editedRows.isEmpty {
 			self.uploadButton.enabled = true 
@@ -122,21 +126,6 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	}
 	
-//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//		let vc:DataPointsViewController = segue.destinationViewController as! DataPointsViewController
-//		
-//		vc.formService = self.formService
-//
-//		
-//		var indexPath = self.collectionView.indexPathsForSelectedItems()[0] as! NSIndexPath
-//		
-//		self.selectedItemRowInfo = self.csvRowsDataArray[indexPath.row]
-//		
-//		vc.rowInfoForPlantId = self.selectedItemRowInfo
-//		
-//
-//		
-//	}
 	
 	private func goToDataPointsView (indexPath:NSIndexPath){
 		
@@ -156,8 +145,35 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	
 	//############# NEEDS TO BE COMPLETED
 	@IBAction func uploadWasPressed(sender: UIBarButtonItem) {
+		self.upload()
+
 		
 		
+		
+	}
+	
+	private func upload(){
+		let csvExport:CSVExport = CSVExport(formService: self.formService)
+		csvExport.prepareCSV()
+		
+		print(csvExport.filename)
+		
+		dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+			self.restClient.uploadFile(csvExport.filename, toPath: "/DataCheck", withParentRev: nil, fromPath: csvExport.localFilePath)
+
+		})
+		
+
+		
+	}
+	
+	func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
+		print("Uploaded\n")
+		print (metadata.path)
+	}
+	
+	func restClient(client: DBRestClient!, uploadFileFailedWithError error: NSError!) {
+		print("Not Uploaded")
 	}
 	
 	

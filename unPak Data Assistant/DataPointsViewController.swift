@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class DataPointsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 	
@@ -184,7 +186,42 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		self.loadData()
 
 	}
+	
+	
+	@IBAction func cameraButtonWasPressed(sender: AnyObject) {
+		
+		let camera:AVCaptureDevice = AVCaptureDevice.devices() [0] as! AVCaptureDevice
+		let cameraSession:AVCaptureSession = AVCaptureSession()
+		camera.lockForConfiguration(nil)
+		camera.focusMode = AVCaptureFocusMode.ContinuousAutoFocus
+		camera.exposureMode = AVCaptureExposureMode.ContinuousAutoExposure
+		camera.unlockForConfiguration()
+		
+	
+		
+		
+		cameraSession.sessionPreset = AVCaptureSessionPresetPhoto
+		cameraSession.addInput(camera)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
 
 	
 	
 }
+
+//[<AVCaptureFigVideoDevice: 0x14c754190
+//	[Back Camera][com.apple.avfoundation.avcapturedevice.built-in_video:0]>, <AVCaptureFigVideoDevice: 0x14c63ac40
+//	[Front Camera][com.apple.avfoundation.avcapturedevice.built-in_video:1]>, <AVCaptureFigAudioDevice: 0x17427da80
+//	[iPhone Microphone][com.apple.avfoundation.avcapturedevice.built-in_audio:0]>]

@@ -25,6 +25,12 @@ class DataEntryViewController: UIViewController {
 	
 	var safeToExit:Bool = true
 	
+	// Variables relating to AlertView Textfeild
+	var textDataEntered:Bool = false
+	var textDataEnteredString:String!
+	
+	
+	
 	@IBOutlet weak var nextButton: UIButton!
 	@IBOutlet weak var previousButton: UIButton!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
@@ -34,7 +40,6 @@ class DataEntryViewController: UIViewController {
 	@IBOutlet weak var stepper: UIStepper!
 	
 	let TEXT_FIELD_PLACEHOLDER:String = "Enter Data:"
-	@IBOutlet weak var commentTextField: UITextField!
 	@IBOutlet weak var numberTextField: UITextField!
 
 	@IBOutlet weak var view2: UIView!
@@ -62,29 +67,65 @@ class DataEntryViewController: UIViewController {
 		
 		
 		self.numberTextField.keyboardType = UIKeyboardType.DecimalPad
-		self.commentTextField.backgroundColor = UIColor.yellowColor()
 		self.numberTextField.placeholder = self.TEXT_FIELD_PLACEHOLDER
-		self.commentTextField.placeholder = self.TEXT_FIELD_PLACEHOLDER
 		
 		self.headers = self.formService.getHeaders()
 		self.editedRows = self.formService.getEditedRows()
 
 		
-		//Set-up alert window
-		alert = UIAlertController(title: "Save and exit", message: self.SAVE_DATA_WARNING, preferredStyle: UIAlertControllerStyle.Alert)
+		//Set-up comment alert window
+		alert = UIAlertController(title: "Enter Comment", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
 		
 		cancelButtonActionStyle = UIAlertActionStyle.Cancel
-		
 		cancelButtonAction = UIAlertAction(title: "Cancel", style: cancelButtonActionStyle, handler: nil)
 		
 		
-		confirmButtonActionStyle = UIAlertActionStyle.Destructive
-		confirmButtonAction = UIAlertAction(title: "Confirm", style: confirmButtonActionStyle, handler: { (confirmButtionAction) -> Void in
+		confirmButtonActionStyle = UIAlertActionStyle.Default
+		confirmButtonAction = UIAlertAction(title: "Confirm", style: confirmButtonActionStyle, handler: { (alert) in
+			var alertTextField:UITextField = self.alert.textFields![0] as! UITextField
+			
+			
+			if alertTextField.text != self.startData{
+				self.textDataEnteredString = alertTextField.text
+				self.textDataEntered = true
+				
+				self.saveButton.enabled = true
+				
+
+	
+			}
+			
+			alertTextField.text = nil
+			
+			
+			
+			print(alertTextField.text)
+			
+			
+			
+
 		})
 		
-		alert.addAction(cancelButtonAction)
-		alert.addAction(confirmButtonAction)
 		
+
+		alert.addAction(confirmButtonAction)
+		alert.addAction(cancelButtonAction)
+		
+		alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+			
+			textField.secureTextEntry = false
+			
+			if self.startData != nil{
+				textField.placeholder = self.startData
+				
+			}
+			
+			else {
+				textField.placeholder = self.TEXT_FIELD_PLACEHOLDER
+
+			}
+			
+		})
 		
 		
 		
@@ -102,9 +143,11 @@ class DataEntryViewController: UIViewController {
 	//UI related logic methods
 	@IBAction func previousButtonWasPressed(sender: AnyObject) {
 		
-		if self.checkDataForSave(self.getTextFieldInput()){
-			self.saveData()
-		}
+//		if self.checkDataForSave(self.getTextFieldInput()){
+//			self.saveData()
+//		}
+		
+		self.saveData()
 		
 		self.currentHeaderIndex! -= 1
 		
@@ -115,10 +158,11 @@ class DataEntryViewController: UIViewController {
 	@IBAction func nextButtonWasPressed(sender: AnyObject) {
 		
 		
-		if self.checkDataForSave(self.getTextFieldInput()){
-			self.saveData()
-		}
+//		if self.checkDataForSave(self.getTextFieldInput()){
+//			self.saveData()
+//		}
 		
+		self.saveData()
 		self.currentHeaderIndex! += 1
 		
 		self.loadData()
@@ -127,30 +171,24 @@ class DataEntryViewController: UIViewController {
 	
 	
 	@IBAction func saveWasPressed(sender: AnyObject) {
-		if self.checkDataForSave(self.getTextFieldInput()){
 			self.saveData()
-		}
-		
-		if self.view2.hidden{
+	
 			self.numberTextField.resignFirstResponder()
-		}
-		else{
-			self.commentTextField.resignFirstResponder()
-		}
+	
+	
 		
 	}
 	
-	@IBAction func switchTriggered(sender: AnyObject) {
+	@IBAction func textInputButtonPressed(sender: AnyObject) {
+	
 		
-		if self.view2.hidden == true{
-			self.view2.hidden = false
-			self.numberTextField.resignFirstResponder()
-		}
-		else{
-			view2.hidden = true
-			self.commentTextField.resignFirstResponder()
-		}
+		self.presentViewController(alert, animated: true, completion: nil)
+		
+		
+		
+		
 	}
+	
 	@IBAction func stepperTriggered(sender: AnyObject) {
 		
 	}
@@ -162,11 +200,6 @@ class DataEntryViewController: UIViewController {
 		
 	}
 	
-	@IBAction func textValueChanged(sender: AnyObject) {
-		self.navigationItem.hidesBackButton = true
-		self.saveButton.enabled = true
-	}
-	
 	
 	
 	//Private convenience methods relating to current data and view set-up
@@ -174,7 +207,7 @@ class DataEntryViewController: UIViewController {
 	private func checkDataForSave(testData:String) -> Bool {
 		var rtnval:Bool = false
 		
-		if testData != self.startData &&  testData != self.numberTextField.placeholder! {
+		if testData != self.startData &&  testData != self.TEXT_FIELD_PLACEHOLDER {
 			self.newData = testData
 			rtnval = true
 		}
@@ -188,16 +221,16 @@ class DataEntryViewController: UIViewController {
 	private func getTextFieldInput() -> String {
 		var testData:String
 		
-		switch self.textSwitch.on {
-		case true:
-			testData = self.commentTextField.text
-			break
+		if self.textDataEntered {
 			
-		default:
-			testData = self.numberTextField.text
-			break
+			testData = self.textDataEnteredString
 		}
 		
+		else {
+			testData = self.numberTextField.text
+
+			
+		}
 		
 		
 		return testData
@@ -207,19 +240,27 @@ class DataEntryViewController: UIViewController {
 	}
 	
 	private func saveData(){
-		self.rowInfoForPlantId[self.headers[self.currentHeaderIndex]] = self.newData
 		
-		self.formService.addEditedRow(currentPlantId, dictionary: self.rowInfoForPlantId)
+		if self.checkDataForSave(self.getTextFieldInput()){
+			self.rowInfoForPlantId[self.headers[self.currentHeaderIndex]] = self.newData
+			
+			self.formService.addEditedRow(currentPlantId, dictionary: self.rowInfoForPlantId)
+			
+			self.navigationItem.hidesBackButton = false
+		}
 		
-		self.navigationItem.hidesBackButton = false
+		
 		
 		self.loadData()
 
 	}
 
-	
+
 	
 	private func loadData(){
+		
+		self.textDataEntered = false
+		
 		self.currentDataPointTitle = self.headers[self.currentHeaderIndex]
 		
 		self.navigationTitleBar.title = self.currentDataPointTitle
@@ -248,13 +289,17 @@ class DataEntryViewController: UIViewController {
 		
 		if !self.startData.isEmpty{
 			self.currentDataLabel.text = self.startData
+			
+			var stringToInt:Int? = self.startData.toInt()
+			
+			print(stringToInt)
+			
+			
 			self.numberTextField.text = self.startData
-			self.commentTextField.text = self.startData
 		}
 			
 		else{
 			self.numberTextField.text = ""
-			self.commentTextField.text = ""
 			self.currentDataLabel.text = "-"
 		}
 		
@@ -264,7 +309,12 @@ class DataEntryViewController: UIViewController {
 	}
 	
 	
+// Camera Set-Up
 	
+	
+	
+	
+
 	
 	
 }

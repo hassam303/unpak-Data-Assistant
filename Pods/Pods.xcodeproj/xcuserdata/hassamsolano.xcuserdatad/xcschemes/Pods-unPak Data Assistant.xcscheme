@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73F1FD178DD42D6770EB4802"
+               BlueprintIdentifier = "6EC4D9BADB27323FD3BF2F9D"
                BuildableName = "Pods_unPak_Data_Assistant.framework"
                BlueprintName = "Pods-unPak Data Assistant"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -36,14 +36,13 @@ class DataEntryViewController: UIViewController {
 	@IBOutlet weak var saveButton: UIBarButtonItem!
 
 	@IBOutlet weak var navigationTitleBar: UINavigationItem!
-	@IBOutlet weak var textSwitch: UISwitch!
 	@IBOutlet weak var stepper: UIStepper!
 	
 	let TEXT_FIELD_PLACEHOLDER:String = "Enter Data:"
+	
+	
 	@IBOutlet weak var numberTextField: UITextField!
 
-	@IBOutlet weak var view2: UIView!
-	@IBOutlet weak var textLabel: UILabel!
 	@IBOutlet weak var currentDataLabel: UILabel!
 	
 	// Alert window variables
@@ -143,9 +142,6 @@ class DataEntryViewController: UIViewController {
 	//UI related logic methods
 	@IBAction func previousButtonWasPressed(sender: AnyObject) {
 		
-//		if self.checkDataForSave(self.getTextFieldInput()){
-//			self.saveData()
-//		}
 		
 		self.saveData()
 		
@@ -157,12 +153,9 @@ class DataEntryViewController: UIViewController {
 	}
 	@IBAction func nextButtonWasPressed(sender: AnyObject) {
 		
-		
-//		if self.checkDataForSave(self.getTextFieldInput()){
-//			self.saveData()
-//		}
-		
+	
 		self.saveData()
+		
 		self.currentHeaderIndex! += 1
 		
 		self.loadData()
@@ -305,14 +298,4 @@ class DataEntryViewController: UIViewController {
 		
 		
 	}
-	
-	
-// Camera Set-Up
-	
-	
-	
-	
-
-	
-	
 }

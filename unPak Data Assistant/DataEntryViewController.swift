@@ -291,9 +291,7 @@ class DataEntryViewController: UIViewController {
 			self.currentDataLabel.text = self.startData
 			
 			var stringToInt:Int? = self.startData.toInt()
-			
-			print(stringToInt)
-			
+						
 			
 			self.numberTextField.text = self.startData
 		}

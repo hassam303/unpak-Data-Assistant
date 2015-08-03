@@ -79,12 +79,14 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		self.activityIndicator.hidesWhenStopped = true
 		self.activityIndicator.color = UIColor.greenColor()
 		
-		
 		//Initialze tempCSVsURL
 		self.tempCSVsURL = self.rootURL!.URLByAppendingPathComponent("tempCSVs", isDirectory: true)
 		
+		
 		//Check to ensure tempCSVs folder is exsistant
 		if !self.fileManager.fileExistsAtPath(tempCSVsURL.path!){
+		
+			
 			self.fileManager.createDirectoryAtURL(tempCSVsURL, withIntermediateDirectories: true, attributes: nil, error: nil)
 			println("Created local temp folder for CSVs")
 		}

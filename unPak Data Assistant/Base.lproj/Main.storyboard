@@ -379,7 +379,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="cameraButtonWasPressed:" destination="NvV-fD-8uD" eventType="touchUpInside" id="HrG-6X-BDm"/>
+                                    <action selector="cameraButtonWasPressed:" destination="NvV-fD-8uD" eventType="touchUpInside" id="TBx-Y5-Fxu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -605,7 +605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sx5-ip-qv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295" y="309"/>
+            <point key="canvasLocation" x="2353" y="318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Wz-pi-62S">

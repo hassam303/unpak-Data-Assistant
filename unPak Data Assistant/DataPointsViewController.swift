@@ -10,7 +10,9 @@ import UIKit
 import AVFoundation
 
 
-class DataPointsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class DataPointsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, DBRestClientDelegate {
+	
+	let restClient:DBRestClient = DBRestClient(session: DBSession.sharedSession())
 	
 	var formService:CurrentFormEntityService!
 	
@@ -40,6 +42,9 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		self.restClient.delegate = self
+		
 		self.allRowInfo = self.formService.getRowsInfo()!
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
@@ -190,23 +195,12 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	
 	@IBAction func cameraButtonWasPressed(sender: AnyObject) {
 		
-		let camera:AVCaptureDevice = AVCaptureDevice.devices() [0] as! AVCaptureDevice
-		let cameraSession:AVCaptureSession = AVCaptureSession()
-		camera.lockForConfiguration(nil)
-		camera.focusMode = AVCaptureFocusMode.ContinuousAutoFocus
-		camera.exposureMode = AVCaptureExposureMode.ContinuousAutoExposure
-		camera.unlockForConfiguration()
-		
+		var imagePickerController:UIImagePickerController = UIImagePickerController()
+		imagePickerController.delegate = self
+		imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
+		imagePickerController.showsCameraControls = true
 	
-		
-		
-		cameraSession.sessionPreset = AVCaptureSessionPresetPhoto
-		cameraSession.addInput(camera)
-		
-		
-		
-		
-		
+		self.presentViewController(imagePickerController, animated: true, completion: nil)
 		
 		
 		
@@ -216,7 +210,54 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		
 	}
 	
+	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+		
+		let fileManager:NSFileManager = NSFileManager.defaultManager()
+		let rootURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: nil)
+		
+		let tempPicsURL = rootURL!.URLByAppendingPathComponent("tempPics", isDirectory: true)
 
+		
+		if !fileManager.fileExistsAtPath(tempPicsURL.path!){
+			//Initialze tempCSVsURL
+			
+			fileManager.createDirectoryAtURL(tempPicsURL, withIntermediateDirectories: true, attributes: nil, error: nil)
+			println("Created local temp folder for Pictures")
+		}
+		
+		var image:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+
+		
+		var tmpPngFile:String = NSTemporaryDirectory().stringByAppendingPathComponent("Temp.png")
+		
+		
+		
+		print(tmpPngFile)
+		
+		
+		UIImagePNGRepresentation(image).writeToFile(tmpPngFile, atomically: true)
+		
+		
+		
+		self.restClient.uploadFile("Pic.PNG", toPath: "/", withParentRev: nil, fromPath: tmpPngFile)
+		
+		UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+	}
+	
+	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+
+	
+	
+	
+	//Dropbox
+	func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
+		print("Uploaded Picture")
+	}
+	
+	
 	
 	
 }

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
-		let dbSession = DBSession(appKey: "yhuvogn5b1m9hbn", appSecret: "u3mbjlw1u55ek92",root: "dropbox")
+		let dbSession = DBSession(appKey: "269ym99rcwocb2t", appSecret: "1iyn85ar7wxzqhe",root: "dropbox")
 		DBSession.setSharedSession(dbSession)
 		
 		return true

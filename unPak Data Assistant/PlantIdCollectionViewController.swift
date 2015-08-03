@@ -159,7 +159,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		print(csvExport.filename)
 		
 		dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-			self.restClient.uploadFile(csvExport.filename, toPath: "/DataCheck", withParentRev: nil, fromPath: csvExport.localFilePath)
+			self.restClient.uploadFile(csvExport.filename, toPath: "/Data_Assistant_Files/DataCheck", withParentRev: nil, fromPath: csvExport.localFilePath)
 
 		})
 		

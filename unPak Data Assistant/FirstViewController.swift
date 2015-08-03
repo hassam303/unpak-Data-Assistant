@@ -32,7 +32,7 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		super.viewDidLoad()
 		self.restClient = DBRestClient(session: DBSession.sharedSession())
 		self.restClient!.delegate = self
-		self.restClient!.loadMetadata("/OpenForms")
+		self.restClient!.loadMetadata("/Data_Assistant_Files/OpenForms")
 		
 		self.tableView.dataSource = self
 		

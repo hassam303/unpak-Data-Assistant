@@ -21,7 +21,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		// Local Objects
 		let fileManager: NSFileManager = NSFileManager.defaultManager()
 	
-		let rootURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: nil)
+		let rootURL = try? NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true)
 	
 		var tempCSVsURL:NSURL!
 	
@@ -87,8 +87,11 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		if !self.fileManager.fileExistsAtPath(tempCSVsURL.path!){
 		
 			
-			self.fileManager.createDirectoryAtURL(tempCSVsURL, withIntermediateDirectories: true, attributes: nil, error: nil)
-			println("Created local temp folder for CSVs")
+			do {
+				try self.fileManager.createDirectoryAtURL(tempCSVsURL, withIntermediateDirectories: true, attributes: nil)
+			} catch _ {
+			}
+			print("Created local temp folder for CSVs")
 		}
 		
 		//Complete DBRestClient initiation
@@ -128,7 +131,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		
 		else {
 			//Set user initials to NewForm Managed object
-			self.formService.setInitials(self.initalsTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+			self.formService.setInitials(self.initalsTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
 	
 			self.statusView.hidden = false
 			self.statusLabel.text = "Downloading file from Dropbox"
@@ -148,9 +151,9 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	private func downloadCurrentForm(){
 		
 
-		self.newFilePath = self.tempCSVsURL.path?.stringByAppendingPathComponent(self.formService.getFormName()!)
+		self.newFilePath = self.tempCSVsURL.path?.stringByAppendingString("/" + self.formService.getFormName()!)
 		
-		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)!
+		self.newFileURL = NSURL(fileURLWithPath: self.newFilePath, isDirectory: false)
 
 		self.restClient.loadFile(self.formService.getFormPath(), intoPath: self.newFilePath)
 		
@@ -161,7 +164,7 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 		//Parsing code added here to emphasize that file is both downloaded and then parsed,MAY NEED FURTHER STREAMLINING
 	
 	func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
-		println("Successful Download\n")
+		print("Successful Download\n")
 		
 		self.statusLabel.text = "Preparing worksheet"
 	
@@ -172,14 +175,19 @@ class FormMenuViewController: UIViewController, DBRestClientDelegate {
 	}
 	
 	func restClient(client: DBRestClient!, loadFileFailedWithError error: NSError!) {
-		println("File was not downloaded, whomp, whomp")
+		print("File was not downloaded, whomp, whomp")
 	}
 	
 	private func parseCSV(fileURL:NSURL) {
 		
 		
-		var error:NSErrorPointer = nil
-		self.csvFile = CSV(contentsOfURL: fileURL, error: error)
+		let error:NSErrorPointer = nil
+		do {
+			self.csvFile = try CSV(contentsOfURL: fileURL)
+		} catch let error1 as NSError {
+			error.memory = error1
+			self.csvFile = nil
+		}
 		
 		
 		

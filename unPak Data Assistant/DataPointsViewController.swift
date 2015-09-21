@@ -77,7 +77,7 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("dataPointsCell") as! UITableViewCell
+		let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("dataPointsCell") as UITableViewCell!
 		let iP = indexPath
 		cell.textLabel!.text = self.dataPointsHeaders[iP.row]
 		
@@ -109,7 +109,7 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 
 		
 		//Logic for determining whether to use CSV rowInfo or previousEdited info
-		var editedData = self.formService.getEditedRows()[self.plantID]
+		let editedData = self.formService.getEditedRows()[self.plantID]
 		
 		if (editedData != nil){
 			self.rowInfoForPlantId = editedData
@@ -195,7 +195,7 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	
 	@IBAction func cameraButtonWasPressed(sender: AnyObject) {
 		
-		var imagePickerController:UIImagePickerController = UIImagePickerController()
+		let imagePickerController:UIImagePickerController = UIImagePickerController()
 		imagePickerController.delegate = self
 		imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
 		imagePickerController.showsCameraControls = true
@@ -210,33 +210,36 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 		
 	}
 	
-	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 		
 		let fileManager:NSFileManager = NSFileManager.defaultManager()
-		let rootURL = NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true, error: nil)
+		let rootURL = try? NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomain: NSSearchPathDomainMask.UserDomainMask, appropriateForURL: nil, create: true)
 		
 		let tempPicsURL = rootURL!.URLByAppendingPathComponent("tempPics", isDirectory: true)
 
 		
 		if !fileManager.fileExistsAtPath(tempPicsURL.path!){
-			//Initialze tempCSVsURL
-			
-			fileManager.createDirectoryAtURL(tempPicsURL, withIntermediateDirectories: true, attributes: nil, error: nil)
-			println("Created local temp folder for Pictures")
+			do {
+				//Initialze tempCSVsURL
+				
+				try fileManager.createDirectoryAtURL(tempPicsURL, withIntermediateDirectories: true, attributes: nil)
+			} catch _ {
+			}
+			print("Created local temp folder for Pictures")
 		}
 		
-		var image:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+		let image:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
 
 		
-		var tmpPngFile:String = NSTemporaryDirectory().stringByAppendingPathComponent("Temp.png")
+		let tmpPngFile:String = NSTemporaryDirectory().stringByAppendingString("/Temp.png")
 		
 		
 		
-		print(tmpPngFile)
+		print(tmpPngFile, terminator: "")
 		
 		
-		UIImagePNGRepresentation(image).writeToFile(tmpPngFile, atomically: true)
+		UIImagePNGRepresentation(image)!.writeToFile(tmpPngFile, atomically: true)
 		
 		
 		
@@ -254,7 +257,7 @@ class DataPointsViewController: UIViewController,UITableViewDataSource,UITableVi
 	
 	//Dropbox
 	func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
-		print("Uploaded Picture")
+		print("Uploaded Picture", terminator: "")
 	}
 	
 	

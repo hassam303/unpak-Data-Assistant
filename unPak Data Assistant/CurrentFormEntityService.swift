@@ -61,7 +61,7 @@ class CurrentFormEntityService {
 		//Assigns the latest added entity or creates new form if none exsists
 	private func assignLatestForm(){
 		
-		let fetchRequestArray:Array<AnyObject> = contxt.executeFetchRequest(self.fetch, error: nil)!
+		let fetchRequestArray:Array<AnyObject> = try! contxt.executeFetchRequest(self.fetch)
 
 		if !fetchRequestArray.isEmpty{
 		
@@ -82,7 +82,10 @@ class CurrentFormEntityService {
 	private func createForm(){
 		// Create instatance of data model and initialize
 		self.form		= CurrentFormDBManagedObject(entity: self.ent, insertIntoManagedObjectContext: self.contxt)
-		self.contxt.save(nil)
+		do {
+			try self.contxt.save()
+		} catch _ {
+		}
 		
 	}
 	
@@ -93,9 +96,12 @@ class CurrentFormEntityService {
 		
 		
 		
-		// Save context
-		
-		contxt.save(nil)
+		do {
+			// Save context
+			
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncHeaders()
 		
 	}
@@ -103,18 +109,24 @@ class CurrentFormEntityService {
 	func setPlantIds(plantIdArray:[String]) -> Void{
 		self.form.plantIds = plantIdArray
 		
-		// Save context
-		
-		contxt.save(nil)
+		do {
+			// Save context
+			
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncPlantIds()
 	}
 	
 	func setRowInfo(rowInfoArray:[Dictionary<String, String>]) -> Void {
 		self.form.rowsInfo = rowInfoArray
 		
-		// Save context
-		
-		contxt.save(nil)
+		do {
+			// Save context
+			
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncRowsInfo()
 		
 	}
@@ -122,9 +134,12 @@ class CurrentFormEntityService {
 	func setInitials(initials:String) -> Void{
 		self.form.userInitials = initials
 		
-		// Save context
-		
-		contxt.save(nil)
+		do {
+			// Save context
+			
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncUserInitials()
 		
 	}
@@ -132,9 +147,12 @@ class CurrentFormEntityService {
 	func setPath(path:String) -> Void{
 		self.form.setValue(path, forKey: "formPath")
 		
-		// Save context
-		
-		contxt.save(nil)
+		do {
+			// Save context
+			
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncFormPath()
 		
 	}
@@ -142,9 +160,12 @@ class CurrentFormEntityService {
 	func setName(name:String) -> Void{
 		self.form.formName = name
 		
-		// Save context
-		
-		contxt.save(nil)
+		do {
+			// Save context
+			
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncFormName()
 		
 	}
@@ -152,8 +173,11 @@ class CurrentFormEntityService {
 	func addEditedRow(plantId:String,dictionary: Dictionary<String,String>) {
 		self.form.editedRows.updateValue(dictionary, forKey: plantId)
 		
-		//Save context 
-		contxt.save(nil)
+		do {
+			//Save context 
+			try contxt.save()
+		} catch _ {
+		}
 		self.syncEditedRows()
 	}
 	
@@ -206,7 +230,10 @@ class CurrentFormEntityService {
 		
 		self.contxt.deleteObject(self.form)
 		
-		self.contxt.save(nil)
+		do {
+			try self.contxt.save()
+		} catch _ {
+		}
 	
 	}
 	

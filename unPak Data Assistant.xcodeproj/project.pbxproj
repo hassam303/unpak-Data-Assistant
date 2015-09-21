@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E920300CC018924FAB34B02 /* Pods_unPak_Data_Assistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		92128D1C1BAA0B180001117C /* unPDA_column_headers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 92128D1B1BAA0B180001117C /* unPDA_column_headers.txt */; };
 		922F4B8E1B18E27F0072E470 /* PlantIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */; };
 		92A53CEF1B51F72000099DAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A53CEE1B51F72000099DAE /* Images.xcassets */; };
 		92B7799F1B1E269C006CBBB1 /* DataEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B7799E1B1E269C006CBBB1 /* DataEntryViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		360FE943FCB1E4A88E807CC5 /* Pods-unPak Data Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unPak Data Assistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unPak Data Assistant/Pods-unPak Data Assistant.debug.xcconfig"; sourceTree = "<group>"; };
 		36BE4127F7C1AE98E06EB481 /* Pods_unPak_Data_Assistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unPak_Data_Assistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92128D1B1BAA0B180001117C /* unPDA_column_headers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unPDA_column_headers.txt; sourceTree = "<group>"; };
 		922F4B8D1B18E27F0072E470 /* PlantIdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantIdCollectionViewCell.swift; sourceTree = "<group>"; };
 		92A53CEE1B51F72000099DAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92B7799E1B1E269C006CBBB1 /* DataEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		92DAD29A1B066EF40005E8B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				92128D1B1BAA0B180001117C /* unPDA_column_headers.txt */,
 				92DAD29B1B066EF40005E8B9 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -234,7 +237,9 @@
 		92DAD28F1B066EF40005E8B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Hassam Solano";
 				TargetAttributes = {
 					92DAD2961B066EF40005E8B9 = {
@@ -273,6 +278,7 @@
 			files = (
 				92DAD2A21B066EF40005E8B9 /* Main.storyboard in Resources */,
 				92A53CEF1B51F72000099DAE /* Images.xcassets in Resources */,
+				92128D1C1BAA0B180001117C /* unPDA_column_headers.txt in Resources */,
 				92C09ABE1B068D4000D7A15B /* DBChooser.bundle in Resources */,
 				92DAD2A71B066EF40005E8B9 /* LaunchScreen.xib in Resources */,
 			);
@@ -414,6 +420,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -488,6 +495,7 @@
 				);
 				INFOPLIST_FILE = "unPak Data Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Solano-Morel-Inc..$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "unPak Data Assistant/unPak Data Assistant-Bridging-Header.h";
@@ -510,6 +518,7 @@
 				);
 				INFOPLIST_FILE = "unPak Data Assistant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Solano-Morel-Inc..$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "unPak Data Assistant/unPak Data Assistant-Bridging-Header.h";
@@ -531,6 +540,7 @@
 				);
 				INFOPLIST_FILE = "unPak Data AssistantTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Solano-Morel-Inc..$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/unPak Data Assistant.app/unPak Data Assistant";
 			};
@@ -546,6 +556,7 @@
 				);
 				INFOPLIST_FILE = "unPak Data AssistantTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Solano-Morel-Inc..$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/unPak Data Assistant.app/unPak Data Assistant";
 			};

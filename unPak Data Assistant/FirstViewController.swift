@@ -46,7 +46,7 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		
 	
 		self.alert.addAction(openFileButtonActionForAlertWindow!)
-		println("Done")
+		print("Done")
 		
 	}
 
@@ -70,14 +70,14 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 			
 			if results != nil {
 				
-				var dbResult:DBChooserResult = results [0] as! DBChooserResult
+				let dbResult:DBChooserResult = results [0] as! DBChooserResult
 				
-				println(dbResult.link)
+				print(dbResult.link)
 				
 			}
 				
 			else {
-				println("User canceled selection")
+				print("User canceled selection")
 			}
 		})
 		
@@ -106,7 +106,7 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("openFormsCell") as! UITableViewCell
+		let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("openFormsCell") as UITableViewCell!
 		let iP = indexPath
 		cell.textLabel!.text = availableFormsArray[iP.row].filename
 		
@@ -119,12 +119,12 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		//Segue set-up
 		
 		
-		var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+		let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
 		
 	
 		// Transfer properties
 
-		self.formService.setPath(availableFormsArray[indexPath.row].path!!)
+		self.formService.setPath(availableFormsArray[indexPath.row].path!)
 		self.formService.setName(availableFormsArray[indexPath.row].filename!!)
 	
 		

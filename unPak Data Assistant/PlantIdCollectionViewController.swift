@@ -77,7 +77,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		cell.selected = false 
 		
 		var tempCellLabel:NSString  = self.csvplantIdArray[iP.row] as NSString
-		var tempCellLength:Int = tempCellLabel.length
+		let tempCellLength:Int = tempCellLabel.length
 		
 		
 		if tempCellLength > self.NUMBER_OF_CHARACTERS_ALLOWED_FOR_PLANTID {
@@ -156,7 +156,7 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 		let csvExport:CSVExport = CSVExport(formService: self.formService)
 		csvExport.prepareCSV()
 		
-		print(csvExport.filename)
+		print(csvExport.filename, terminator: "")
 		
 		dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
 			self.restClient.uploadFile(csvExport.filename, toPath: "/Data_Assistant_Files/DataCheck", withParentRev: nil, fromPath: csvExport.localFilePath)
@@ -168,12 +168,12 @@ class PlantIdCollectionViewController: UIViewController, UICollectionViewDataSou
 	}
 	
 	func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
-		print("Uploaded\n")
-		print (metadata.path)
+		print("Uploaded\n", terminator: "")
+		print (metadata.path, terminator: "")
 	}
 	
 	func restClient(client: DBRestClient!, uploadFileFailedWithError error: NSError!) {
-		print("Not Uploaded")
+		print("Not Uploaded", terminator: "")
 	}
 	
 	

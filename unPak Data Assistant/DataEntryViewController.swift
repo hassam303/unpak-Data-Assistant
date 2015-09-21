@@ -45,6 +45,35 @@ class DataEntryViewController: UIViewController {
 
 	@IBOutlet weak var currentDataLabel: UILabel!
 	
+	
+	
+	
+	
+	//Views
+	
+	@IBOutlet weak var keyboardView: UIView!
+	
+	
+	@IBOutlet weak var binaryView: UIView!
+	
+		//KeyboardView TextField
+
+	@IBOutlet weak var keyboardTextField: UITextView!
+	
+		//BinaryViewButtons
+	
+	@IBOutlet weak var yesButton: UIButton!
+	
+	@IBOutlet weak var noButton: UIButton!
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Alert window variables
 	var alert:UIAlertController!
 	
@@ -81,7 +110,7 @@ class DataEntryViewController: UIViewController {
 		
 		confirmButtonActionStyle = UIAlertActionStyle.Default
 		confirmButtonAction = UIAlertAction(title: "Confirm", style: confirmButtonActionStyle, handler: { (alert) in
-			var alertTextField:UITextField = self.alert.textFields![0] as! UITextField
+			let alertTextField:UITextField = self.alert.textFields![0] 
 			
 			
 			if alertTextField.text != self.startData{
@@ -98,7 +127,7 @@ class DataEntryViewController: UIViewController {
 			
 			
 			
-			print(alertTextField.text)
+			print(alertTextField.text, terminator: "")
 			
 			
 			
@@ -110,7 +139,7 @@ class DataEntryViewController: UIViewController {
 		alert.addAction(confirmButtonAction)
 		alert.addAction(cancelButtonAction)
 		
-		alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+		alert.addTextFieldWithConfigurationHandler({(textField: UITextField) in
 			
 			textField.secureTextEntry = false
 			
@@ -220,7 +249,7 @@ class DataEntryViewController: UIViewController {
 		}
 		
 		else {
-			testData = self.numberTextField.text
+			testData = self.numberTextField.text!
 
 			
 		}
@@ -282,9 +311,7 @@ class DataEntryViewController: UIViewController {
 		
 		if !self.startData.isEmpty{
 			self.currentDataLabel.text = self.startData
-			
-			var stringToInt:Int? = self.startData.toInt()
-						
+									
 			
 			self.numberTextField.text = self.startData
 		}

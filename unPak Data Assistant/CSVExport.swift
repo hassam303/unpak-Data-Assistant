@@ -12,7 +12,7 @@ class CSVExport: NSObject, DBRestClientDelegate{
 	
 	private let restClient:DBRestClient = DBRestClient(session: DBSession.sharedSession())
 	private let fileManager:NSFileManager = NSFileManager.defaultManager()
-	private let rootfolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+	private let rootfolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
 	private var fileHandle:NSFileHandle!
 	
 	var filename:String
@@ -23,7 +23,7 @@ class CSVExport: NSObject, DBRestClientDelegate{
 	
 	var editedRows: Dictionary<String,Dictionary<String,String>>
 	
-	var plantIdKeys:[String]
+	var plantIdKeys:[String] = [String]()
 	
 
 	
@@ -32,8 +32,10 @@ class CSVExport: NSObject, DBRestClientDelegate{
 		
 		self.formService = formService
 		self.editedRows = formService.getEditedRows()
-		self.plantIdKeys = self.editedRows.keys.array
 		
+		for key in self.editedRows.keys{
+			self.plantIdKeys.append(key)
+		}
 		
 		
 		
@@ -41,28 +43,30 @@ class CSVExport: NSObject, DBRestClientDelegate{
 		
 		//Create a new file
 		
-		let newFolderPath = rootfolder.stringByAppendingPathComponent("DataCheck")
+		let newFolderPath = rootfolder.stringByAppendingString("/DataCheck")
 
 		
 		if !self.fileManager.fileExistsAtPath(newFolderPath){
-			self.fileManager.createDirectoryAtPath(newFolderPath, withIntermediateDirectories: true, attributes: nil, error: nil)
+			do {
+				try self.fileManager.createDirectoryAtPath(newFolderPath, withIntermediateDirectories: true, attributes: nil)
+			} catch _ {
+			}
 		}
 		
-		var shortenedFileName:String = self.formService.getFormName()!
-		shortenedFileName = shortenedFileName.stringByDeletingPathExtension
+		let shortenedFileName:String = self.formService.getFormName()!.componentsSeparatedByString(".").first!
 		
 		var timestamp:String = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.ShortStyle , timeStyle: NSDateFormatterStyle.ShortStyle)
-		timestamp = timestamp.stringByReplacingOccurrencesOfString("/", withString: ".", options: nil, range: nil)
-		timestamp = timestamp.stringByReplacingOccurrencesOfString(",", withString: "@", options: nil, range: nil)
-		timestamp = timestamp.stringByReplacingOccurrencesOfString(":", withString: ".", options: nil, range: nil)
+		timestamp = timestamp.stringByReplacingOccurrencesOfString("/", withString: ".", options: [], range: nil)
+		timestamp = timestamp.stringByReplacingOccurrencesOfString(",", withString: "@", options: [], range: nil)
+		timestamp = timestamp.stringByReplacingOccurrencesOfString(":", withString: ".", options: [], range: nil)
 		timestamp = timestamp.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		
 		
-		self.localFilePath = newFolderPath.stringByAppendingPathComponent(shortenedFileName + "_" + self.formService.getUserInitials()! + "_" + timestamp + ".csv")
+		self.localFilePath = newFolderPath.stringByAppendingString("/" + shortenedFileName + "_" + self.formService.getUserInitials()! + "_" + timestamp + ".csv")
 		self.fileManager.createFileAtPath(self.localFilePath, contents: nil, attributes: nil)
 
 		
-		self.filename = self.localFilePath.pathComponents.last!
+		self.filename = self.localFilePath.componentsSeparatedByString("/").last!
 			
 			
 		
@@ -81,7 +85,7 @@ class CSVExport: NSObject, DBRestClientDelegate{
 		var currentHeaders:String = String()
 		var currentData:String = String()
 		
-		var formHeaders:[String] = self.formService.getHeaders()!
+		let formHeaders:[String] = self.formService.getHeaders()!
 		
 		var currentRowInfo:Dictionary<String,String>
 		
@@ -113,7 +117,7 @@ class CSVExport: NSObject, DBRestClientDelegate{
 		
 		
 		//Add data rows
-		var sortedKeys = sorted(self.plantIdKeys, { (str1:String, str2:String) -> Bool in
+		let sortedKeys = self.plantIdKeys.sort({ (str1:String, str2:String) -> Bool in
 			return str1 < str2
 		})
 		

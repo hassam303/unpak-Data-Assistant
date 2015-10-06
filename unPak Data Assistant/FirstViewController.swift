@@ -64,24 +64,24 @@ class FirstViewController: UIViewController,DBRestClientDelegate,UITableViewData
 		
 	}
 	
-	@IBAction func chooserSelected(sender: AnyObject) {
-		
-		DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
-			
-			if results != nil {
-				
-				let dbResult:DBChooserResult = results [0] as! DBChooserResult
-				
-				print(dbResult.link)
-				
-			}
-				
-			else {
-				print("User canceled selection")
-			}
-		})
-		
-	}
+//	@IBAction func chooserSelected(sender: AnyObject) {
+//		
+//		DBChooser.defaultChooser().openChooserForLinkType(DBChooserLinkTypePreview, fromViewController: self, completion: { (results: [AnyObject]!) -> Void in
+//			
+//			if results != nil {
+//				
+//				let dbResult:DBChooserResult = results [0] as! DBChooserResult
+//				
+//				print(dbResult.link)
+//				
+//			}
+//				
+//			else {
+//				print("User canceled selection")
+//			}
+//		})
+//		
+//	}
 	
 	@IBAction func refreshButtonPressed(sender: AnyObject) {
 		tableView.reloadData()
